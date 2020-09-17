@@ -27,16 +27,17 @@ namespace SenderTests
 
     public class SenderOutputTests
     {
-        [Fact]
-        public void WhenCalledWithTwoDimensionalIEnumerableThenGiveProperRowAndColumnCountAndAccessValuesRowWiseFromData()
-        {
-            List<List<String>> testinput = new List<List<string>>
+         List<List<String>> testinput = new List<List<string>>
             {
                 new List<string> { "Date", "Comment" },
                 new List<string> { "12/12/2012", "All good" },
                 new List<string> { "11/11/2011", "Remove duplication" },
                 new List<string> { "30/11/2015", "Edge Cases not handled" }
             };
+        
+        [Fact]
+        public void WhenCalledWithTwoDimensionalIEnumerableThenGiveProperRowAndColumnCountAndAccessValuesRowWiseFromData()
+        {
 
             MockConsoleOutput mockConsoleOuput = new MockConsoleOutput();
             mockConsoleOuput.WriteOutput(testinput);
@@ -50,28 +51,14 @@ namespace SenderTests
         [Fact]
         public void WhenCalledWithTwoDimensionalDataThenReturnNumberofColumnsinData()
         {
-            List<List<String>> testinput = new List<List<string>>
-            {
-                new List<string> { "Date", "Comment" },
-                new List<string> { "12/12/2012", "All good" },
-                new List<string> { "11/11/2011", "Remove duplication" },
-                new List<string> { "30/11/2015", "Edge Cases not handled" }
-            };
-
+           
             int noofColumns = ConsoleOutput.GetNumberofColumns(testinput);
             Assert.True(noofColumns == 2);
         }
         [Fact]
         public void WhenCalledWithTwoDimensionalDataThenReturnNumberofRowsinData()
         {
-            List<List<String>> testinput = new List<List<string>>
-            {
-                new List<string> { "Date", "Comment" },
-                new List<string> { "12/12/2012", "All good" },
-                new List<string> { "11/11/2011", "Remove duplication" },
-                new List<string> { "30/11/2015", "Edge Cases not handled" }
-            };
-
+            
             int n_rows = ConsoleOutput.GetNumberofRows(testinput);
             Assert.True(n_rows == 4);
         }
