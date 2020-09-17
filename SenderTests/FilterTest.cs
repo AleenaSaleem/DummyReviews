@@ -35,9 +35,9 @@ namespace SenderTests
             testInput.Add(temp2);
 
             var testOutput = (List<List<string>>)Filter.GetDataFilteredByColumnRange(testInput,0,2);
-            Assert.Equal("column2", testOutput[0][0]);
+            Assert.Equal("column1", testOutput[0][0]);
             Assert.Equal("column3", testOutput[0][2]);
-            Assert.Equal("c2data", testOutput[1][0]);
+            Assert.Equal("c1data", testOutput[1][0]);
             Assert.Equal("c3data", testOutput[1][2]);
         }
     }
