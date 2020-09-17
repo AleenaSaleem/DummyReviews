@@ -23,7 +23,8 @@ namespace Sender
         }
         static void Main()
         {
-            const string filepath = @"D:\a\DummyReviews\DummyReviews\Sender\Comments.csv";
+            //const string filepath = @"D:\a\DummyReviews\DummyReviews\Sender\Comments.csv";
+            const string filepath = Console.ReadLine();
             var csvInput = new CsvInput(filepath);
             var consoleOutput = new ConsoleOutput();
             var controller = new Controller(csvInput, consoleOutput);
