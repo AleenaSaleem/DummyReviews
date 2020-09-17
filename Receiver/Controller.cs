@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 
 
-namespace ReceiverInput
+namespace Receiver
 {
     public class Controller
     {
