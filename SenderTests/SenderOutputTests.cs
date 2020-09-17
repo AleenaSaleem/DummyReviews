@@ -23,7 +23,7 @@ namespace SenderTests
 
     public class SenderOutputTests
     {
-         readonly List<List<String>> testInput = new List<List<string>>
+         private readonly List<List<string>> _testInput = new List<List<string>>
             {
                 new List<string> { "Date", "Comment" },
                 new List<string> { "12/12/2012", "All good" },
