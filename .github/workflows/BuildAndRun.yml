@@ -46,7 +46,7 @@ jobs:
       run: dotnet tool install -g JetBrains.ReSharper.GlobalTools
         
     - name:  Run resharper code inspection
-      run: jb inspect code ReviewOfReviews.sln /output=insreport.xml
+      run: jb inspectcode ReviewOfReviews.sln /output=insreport.xml
     
     - name:  Run resharper duplicate code check
       run: jb dupfinder ReviewOfReviews.sln /output=dupreport.xml
