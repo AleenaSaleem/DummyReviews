@@ -21,17 +21,14 @@ namespace Sender
         {
             OutputInterface.WriteOutput(parsedData);
         }
-        /*static void Main()
+        static void Main()
         {
-            const string filepath = @"E:\BootCamp\Sender\SenderTests\EmptySample.csv";
-            //string filter = args[0];
-            //Console.WriteLine(filter);
+            const string filepath = @"D:\a\DummyReviews\DummyReviews\Sender\Comments.csv";
             var csvInput = new CsvInput(filepath);
             var consoleOutput = new ConsoleOutput();
             var controller = new Controller(csvInput, consoleOutput);
             var parsedinput = (List<List<string>>)controller.ReadInput();
-            //Console.WriteLine(parsedinput.Count);
             controller.WriteOutput(parsedinput);
-        }*/
+        }
     }
 }
