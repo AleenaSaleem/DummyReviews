@@ -7,11 +7,11 @@ namespace SenderTests
     public class MockConsoleOutput : ISenderOutput
     {
         internal List<List<String>> OutputOnConsole = new List<List<string>>();
-        internal int n_rows, n_columns;
+        internal int nRows, nColumns;
         public void WriteOutput(IEnumerable<IEnumerable<String>> data)
         {
-            n_rows = ConsoleOutput.GetNumberofRows(data);
-            n_columns = ConsoleOutput.GetNumberofColumns(data);
+            nRows = ConsoleOutput.GetNumberofRows(data);
+            nColumns = ConsoleOutput.GetNumberofColumns(data);
             List<String> newRow;
             foreach (IEnumerable<String> row in data)
             {
@@ -43,8 +43,8 @@ namespace SenderTests
             mockConsoleOuput.WriteOutput(testinput);
 
             List<List<String>> testoutput = mockConsoleOuput.OutputOnConsole;
-            Assert.Equal(4, mockConsoleOuput.n_rows);
-            Assert.Equal(2, mockConsoleOuput.n_columns);
+            Assert.Equal(4, mockConsoleOuput.nRows);
+            Assert.Equal(2, mockConsoleOuput.nColumns);
             Assert.Equal(testinput, testoutput);
         }
 
@@ -52,15 +52,15 @@ namespace SenderTests
         public void WhenCalledWithTwoDimensionalDataThenReturnNumberofColumnsinData()
         {
            
-            int noofColumns = ConsoleOutput.GetNumberofColumns(testinput);
-            Assert.True(noofColumns == 2);
+            int nColumns = ConsoleOutput.GetNumberofColumns(testinput);
+            Assert.True(nColumns == 2);
         }
         [Fact]
         public void WhenCalledWithTwoDimensionalDataThenReturnNumberofRowsinData()
         {
             
-            int n_rows = ConsoleOutput.GetNumberofRows(testinput);
-            Assert.True(n_rows == 4);
+            int nRows = ConsoleOutput.GetNumberofRows(testinput);
+            Assert.True(nRows == 4);
         }
 
     }
