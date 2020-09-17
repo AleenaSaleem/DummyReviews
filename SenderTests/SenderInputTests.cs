@@ -47,18 +47,18 @@ namespace SenderTests
             Assert.True(testOutput.Count==0);
         }
         [Fact]
-        public void TestExpectingExceptionWhenFileCouldNotBeFoundOrOpened()
+        public void TestExpectingTrueWhenCheckIfFileExistsMethodIsCalledFromThisMethod()
         {
-            string filepath = @"D:\a\DummyReviews\DummyReviews\SenderTests\TestSample2.csv";
+            
             CSVInput csvInput = new CSVInput(filepath);
             Assert.True(csvInput.InputExceptionHandler());
         }
         [Fact]
-        public void TestExpectingNoExceptionWhenFileExists()
+        public void TestExpectingExceptionWhenFileDoesNotExistsOrCouldNotBeFound()
         {
-            string filepath = @"D:\a\DummyReviews\DummyReviews\SenderTests\TestSample.csv";
+            string filepath = @"D:\a\DummyReviews\DummyReviews\SenderTests\TestSample2.csv";
             CSVInput csvInput = new CSVInput(filepath);
-            Assert.False(csvInput.InputExceptionHandler());
+            Assert.Throws<FileNotFoundException>(() => csvInput.CheckIfFileExists());
         }
     }
 }
