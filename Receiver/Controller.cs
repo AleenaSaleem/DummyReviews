@@ -1,17 +1,14 @@
-﻿using System;
-using System.CodeDom;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Receiver
+
+namespace ReceiverInput
 {
     public class Controller
     {
-        public IReceiverInput InputInterface;
-        public IReceiverOutput OutputInterface;
-        public Controller(IReceiverInput InputInterface, IReceiverOutput OutputInterface)
+       public IReceiverInput InputInterface;
+       public IReceiverOutput OutputInterface;
+        public Controller(IReceiverInput InputInterface, IReceiverOutput OutputInterface) 
         {
             this.InputInterface = InputInterface;
             this.OutputInterface = OutputInterface;
@@ -31,11 +28,11 @@ namespace Receiver
             ConsoleInput consoleInput = new ConsoleInput();
             string filepath = @"E:\BootCamp\ReceiverInput\output.csv";
             CSVOutput csvOutput = new CSVOutput(filepath);
-            Controller controller = new Controller(consoleInput, csvOutput);
+            Controller controller = new Controller(consoleInput,csvOutput);
             var Output = (List<List<string>>)controller.ReadInput();
-            foreach (var row in Output)
+            foreach(var row in Output)
             {
-                foreach (var str in row)
+                foreach(var str in row)
                 {
                     Console.WriteLine(str);
                 }
@@ -47,8 +44,9 @@ namespace Receiver
             {
                 Console.WriteLine("{0} and {1}", ele2.Key, ele2.Value);
             }
-
+            
             controller.WriteOutput(wordCount);
         }
     }
 }
+
