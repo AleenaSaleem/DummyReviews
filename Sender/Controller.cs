@@ -1,39 +1,37 @@
-using System;
 using System.Collections.Generic;
 
 namespace Sender
 {
     public class Controller
     {
-        public ISenderInput inputInterface;
-        public ISenderOutput outputInterface;
+        public ISenderInput InputInterface;
+        public ISenderOutput OutputInterface;
         public Controller(ISenderInput inputInterface, ISenderOutput outputInterface)
         {
-            this.inputInterface = inputInterface;
-            this.outputInterface = outputInterface;
+            this.InputInterface = inputInterface;
+            this.OutputInterface = outputInterface;
         }
         public IEnumerable<IEnumerable<string>> ReadInput()
         {
-            inputInterface.InputExceptionHandler();
-            return inputInterface.ReadInput();
+            InputInterface.InputExceptionHandler();
+            return InputInterface.ReadInput();
         }
 
         public void WriteOutput(IEnumerable<IEnumerable<string>> parsedData)
         {
-            outputInterface.WriteOutput(parsedData);
+            OutputInterface.WriteOutput(parsedData);
         }
-        /*static void Main(string[] args)
+        /*static void Main()
         {
-            string filepath = @"E:\BootCamp\Sender\SenderTests\EmptySample.csv";
+            const string filepath = @"E:\BootCamp\Sender\SenderTests\EmptySample.csv";
             //string filter = args[0];
             //Console.WriteLine(filter);
-            CSVInput csvInput = new CSVInput(filepath);
-            ConsoleOutput consoleOutput = new ConsoleOutput();
-            Controller controller = new Controller(csvInput, consoleOutput);
-            List<List<string>> parsedinput = (List<List<string>>)controller.ReadInput();
+            var csvInput = new CsvInput(filepath);
+            var consoleOutput = new ConsoleOutput();
+            var controller = new Controller(csvInput, consoleOutput);
+            var parsedinput = (List<List<string>>)controller.ReadInput();
             //Console.WriteLine(parsedinput.Count);
             controller.WriteOutput(parsedinput);
         }*/
     }
 }
-
