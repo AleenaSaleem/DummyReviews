@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using ReceiverInput;
+using Receiver;
 using Xunit;
 namespace ReceiverTests
 {
