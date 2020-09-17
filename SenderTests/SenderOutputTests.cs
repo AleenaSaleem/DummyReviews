@@ -23,10 +23,7 @@ namespace SenderTests
 
     public class SenderOutputTests
     {
-        [Fact]
-        public void WhenCalledWithTwoDimensionalIEnumerableThenGiveProperRowAndColumnCountAndAccessValuesRowWiseFromData()
-        {
-            var testInput = new List<List<string>>
+        var testInput = new List<List<string>>
             {
                 new List<string> { "Date", "Comment" },
                 new List<string> { "12/12/2012", "All good" },
@@ -34,6 +31,10 @@ namespace SenderTests
                 new List<string> { "30/11/2015", "Edge Cases not handled" }
             };
 
+        [Fact]
+        public void WhenCalledWithTwoDimensionalIEnumerableThenGiveProperRowAndColumnCountAndAccessValuesRowWiseFromData()
+        {
+            
             var mockConsoleOutput = new MockConsoleOutput();
             mockConsoleOutput.WriteOutput(testInput);
 
@@ -46,14 +47,6 @@ namespace SenderTests
         [Fact]
         public void WhenCalledWithTwoDimensionalDataThenReturnNumberOfColumnsInData()
         {
-            var testInput = new List<List<string>>
-            {
-                new List<string> { "Date", "Comment" },
-                new List<string> { "12/12/2012", "All good" },
-                new List<string> { "11/11/2011", "Remove duplication" },
-                new List<string> { "30/11/2015", "Edge Cases not handled" }
-            };
-
             var nColumns = ConsoleOutput.GetNumberOfColumns(testInput);
             Assert.True(nColumns == 2);
         }
@@ -61,14 +54,6 @@ namespace SenderTests
         [Fact]
         public void WhenCalledWithTwoDimensionalDataThenReturnNumberOfRowsInData()
         {
-            var testInput = new List<List<string>>
-            {
-                new List<string> { "Date", "Comment" },
-                new List<string> { "12/12/2012", "All good" },
-                new List<string> { "11/11/2011", "Remove duplication" },
-                new List<string> { "30/11/2015", "Edge Cases not handled" }
-            };
-
             var nRows = ConsoleOutput.GetNumberOfRows(testInput);
             Assert.True(nRows == 4);
         }
