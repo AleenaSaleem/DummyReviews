@@ -23,7 +23,7 @@ namespace Receiver
         {
             OutputInterface.WriteOutput(wordCount);
         }
-        /*static void Main(string[] args)
+        static void Main()
         {
             ConsoleInput consoleInput = new ConsoleInput();
             string filepath = @"E:\BootCamp\ReceiverInput\output.csv";
@@ -46,7 +46,7 @@ namespace Receiver
             }
             
             controller.WriteOutput(wordCount);
-        }*/
+        }
     }
 }
 
