@@ -1,51 +1,43 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Sender
 {
     public interface ISenderOutput
     {
-        void WriteOutput(IEnumerable<IEnumerable<String>> data);
+        void WriteOutput(IEnumerable<IEnumerable<string>> data);
     }
 
     public class ConsoleOutput : ISenderOutput
     {
-        public void WriteOutput(IEnumerable<IEnumerable<String>> data)
+        public void WriteOutput(IEnumerable<IEnumerable<string>> data)
         {
-            int n_rows = GetNumberofRows(data);
-            int n_columns = GetNumberofColumns(data);
-            Console.WriteLine(n_rows);
-            Console.WriteLine(n_columns);
-            foreach (IEnumerable<String> row in data)
+            var dataList = data.ToList();
+            var nRows = GetNumberOfRows(dataList);
+            var nColumns = GetNumberOfColumns(dataList);
+            Console.WriteLine(nRows);
+            Console.WriteLine(nColumns);
+            foreach (var value in dataList.SelectMany(row => row))
             {
-                foreach (String value in row)
-                {
-                    Console.WriteLine(value);
-                }
+                Console.WriteLine(value);
             }
         }
 
-        public static int GetNumberofColumns(IEnumerable<IEnumerable<String>> data)
+        public static int GetNumberOfColumns(IEnumerable<IEnumerable<string>> data)
         {
-            int col_count = 0;
-            foreach (IEnumerable<String> row in data)
+            var colCount = 0;
+            foreach (var row in data)
             {
-                foreach (String value in row)
-                {
-                    col_count++;
-                }
+                colCount += row.Count();
                 break;
             }
-            return col_count;
+            return colCount;
         }
-        public static int GetNumberofRows(IEnumerable<IEnumerable<String>> data)
+
+        public static int GetNumberOfRows(IEnumerable<IEnumerable<string>> data)
         {
-            int row_count = 0;
-            foreach (IEnumerable<String> row in data)
-            {
-                row_count++;
-            }
-            return row_count;
+            return data.Count();
         }
     }
 }
