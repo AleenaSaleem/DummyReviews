@@ -23,7 +23,7 @@ namespace SenderTests
 
     public class SenderOutputTests
     {
-         private readonly List<List<string>> _testInput = new List<List<string>>
+        private readonly List<List<string>> _testInput = new List<List<string>>
             {
                 new List<string> { "Date", "Comment" },
                 new List<string> { "12/12/2012", "All good" },
@@ -34,27 +34,27 @@ namespace SenderTests
         [Fact]
         public void WhenCalledWithTwoDimensionalIEnumerableThenGiveProperRowAndColumnCountAndAccessValuesRowWiseFromData()
         {
-            
+
             var mockConsoleOutput = new MockConsoleOutput();
-            mockConsoleOutput.WriteOutput(testInput);
+            mockConsoleOutput.WriteOutput(_testInput);
 
             var testOutput = mockConsoleOutput.OutputOnConsole;
             Assert.Equal(4, mockConsoleOutput.NRows);
             Assert.Equal(2, mockConsoleOutput.NColumns);
-            Assert.Equal(testInput, testOutput);
+            Assert.Equal(_testInput, testOutput);
         }
 
         [Fact]
         public void WhenCalledWithTwoDimensionalDataThenReturnNumberOfColumnsInData()
         {
-            var nColumns = ConsoleOutput.GetNumberOfColumns(testInput);
+            var nColumns = ConsoleOutput.GetNumberOfColumns(_testInput);
             Assert.True(nColumns == 2);
         }
 
         [Fact]
         public void WhenCalledWithTwoDimensionalDataThenReturnNumberOfRowsInData()
         {
-            var nRows = ConsoleOutput.GetNumberOfRows(testInput);
+            var nRows = ConsoleOutput.GetNumberOfRows(_testInput);
             Assert.True(nRows == 4);
         }
 
