@@ -22,9 +22,10 @@ namespace Sender
         }
         public bool InputExceptionHandler()
         {
-            bool status = true;
+            bool status;
             if (!File.Exists(filepath))
             {
+                status = true;
                 throw new FileNotFoundException();
             }
             status = false;
