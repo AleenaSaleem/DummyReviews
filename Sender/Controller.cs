@@ -4,8 +4,8 @@ namespace Sender
 {
     public class Controller
     {
-        ISenderInput InputInterface;
-        ISenderOutput OutputInterface;
+        public ISenderInput InputInterface;
+        public ISenderOutput OutputInterface;
         public Controller(ISenderInput InputInterface, ISenderOutput OutputInterface)
         {
             this.InputInterface = InputInterface;
