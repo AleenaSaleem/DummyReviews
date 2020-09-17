@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -13,33 +12,32 @@ namespace Sender
         bool InputExceptionHandler();
     }
 
-    public class CSVInput : ISenderInput
+    public class CsvInput : ISenderInput
     {
-        public string filepath;
-        public CSVInput(string filepath)
+        public string Filepath;
+        public CsvInput(string filepath)
         {
-            this.filepath = filepath;
+            this.Filepath = filepath;
         }
+
         public void CheckIfFileExists()
         {
-            if (!File.Exists(filepath))
+            if (!File.Exists(Filepath))
             {
                 throw new FileNotFoundException();
             }
         }
-        
+
         public bool InputExceptionHandler()
         {
-            bool status=false;
             CheckIfFileExists();
-            status=true;
-            return status;
-
+            return true;
         }
-        public List<List<string>> csvData = new List<List<string>>();
+
+        public List<List<string>> CsvData = new List<List<string>>();
         public IEnumerable<IEnumerable<string>> ReadInput()
         {
-            using (var reader = new StreamReader(filepath))
+            using (var reader = new StreamReader(Filepath))
             {
 
                 while (!reader.EndOfStream)
@@ -47,14 +45,12 @@ namespace Sender
                     var line = reader.ReadLine();
                     var values = line.Split(',');
                     //Note: The first row in this list contains headers from CSV file
-                    csvData.Add(values.ToList<string>());
+                    CsvData.Add(values.ToList());
                 }
 
-
             }
-            return csvData;
+            return CsvData;
         }
 
     }
 }
-
