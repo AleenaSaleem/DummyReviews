@@ -23,7 +23,7 @@ namespace SenderTests
 
     public class SenderOutputTests
     {
-        var testInput = new List<List<string>>
+        IEnumerable<string> testInput = new List<List<string>>
             {
                 new List<string> { "Date", "Comment" },
                 new List<string> { "12/12/2012", "All good" },
