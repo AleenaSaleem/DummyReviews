@@ -28,7 +28,10 @@ namespace Sender
                 status = true;
                 throw new FileNotFoundException();
             }
-            status = false;
+            else{
+            
+                status = false;
+            }
             return status;
 
         }
