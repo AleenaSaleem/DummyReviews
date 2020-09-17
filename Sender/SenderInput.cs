@@ -20,18 +20,19 @@ namespace Sender
         {
             this.filepath = filepath;
         }
-        public bool InputExceptionHandler()
+        public void CheckIfFileExists()
         {
-            bool status;
             if (!File.Exists(filepath))
             {
-                status = true;
                 throw new FileNotFoundException();
             }
-            else{
-            
-                status = false;
-            }
+        }
+        
+        public bool InputExceptionHandler()
+        {
+            bool status=false;
+            CheckIfFileExists();
+            status=true;
             return status;
 
         }
