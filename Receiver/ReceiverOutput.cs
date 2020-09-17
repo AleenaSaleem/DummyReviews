@@ -24,6 +24,7 @@ namespace Receiver
             foreach(var line in WordFrequency)
             {
                 var newLine = string.Format("{0},{1}", line.Key, line.Value);
+                Console.WriteLine(newLine);
                 csv.AppendLine(newLine);
             }
            
