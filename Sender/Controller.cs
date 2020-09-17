@@ -22,9 +22,9 @@ namespace Sender
         {
             outputInterface.WriteOutput(parsedData);
         }
-        static void Main(string[] args)
+        /*static void Main(string[] args)
         {
-            /*string filepath = @"E:\BootCamp\Sender\SenderTests\EmptySample.csv";
+            string filepath = @"E:\BootCamp\Sender\SenderTests\EmptySample.csv";
             //string filter = args[0];
             //Console.WriteLine(filter);
             CSVInput csvInput = new CSVInput(filepath);
@@ -32,8 +32,8 @@ namespace Sender
             Controller controller = new Controller(csvInput, consoleOutput);
             List<List<string>> parsedinput = (List<List<string>>)controller.ReadInput();
             //Console.WriteLine(parsedinput.Count);
-            controller.WriteOutput(parsedinput);*/
-        }
+            controller.WriteOutput(parsedinput);
+        }*/
     }
 }
 
