@@ -1,6 +1,6 @@
 
 using Xunit;
-using ReceiverInput;
+using Receiver;
 namespace ReceiverTests
 {
     public class ControllerTests
