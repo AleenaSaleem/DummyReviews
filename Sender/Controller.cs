@@ -21,10 +21,10 @@ namespace Sender
         {
             OutputInterface.WriteOutput(parsedData);
         }
-        static void Main()
+        static void Main(string[] args)
         {
             //const string filepath = @"D:\a\DummyReviews\DummyReviews\Sender\Comments.csv";
-            const string filepath = Console.ReadLine();
+            const string filepath = args[0];
             var csvInput = new CsvInput(filepath);
             var consoleOutput = new ConsoleOutput();
             var controller = new Controller(csvInput, consoleOutput);
