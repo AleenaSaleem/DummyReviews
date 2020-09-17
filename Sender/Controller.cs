@@ -4,12 +4,12 @@ namespace Sender
 {
     public class Controller
     {
-        public ISenderInput InputInterface;
-        public ISenderOutput OutputInterface;
-        public Controller(ISenderInput inputInterface, ISenderOutput outputInterface)
+        ISenderInput InputInterface;
+        ISenderOutput OutputInterface;
+        public Controller(ISenderInput InputInterface, ISenderOutput OutputInterface)
         {
-            this.InputInterface = inputInterface;
-            this.OutputInterface = outputInterface;
+            this.InputInterface = InputInterface;
+            this.OutputInterface = OutputInterface;
         }
         public IEnumerable<IEnumerable<string>> ReadInput()
         {
