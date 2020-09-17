@@ -51,7 +51,7 @@ namespace SenderTests
         {
             string filepath = @"D:\a\DummyReviews\DummyReviews\SenderTests\TestSample2.csv";
             CSVInput csvInput = new CSVInput(filepath);
-            Assert.ThrowsAsync<FileNotFoundException>(() => csvInput.InputExceptionHandler());
+            Assert.True(csvInput.InputExceptionHandler());
         }
         [Fact]
         public void TestExpectingNoExceptionWhenFileExists()
