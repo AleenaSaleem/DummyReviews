@@ -49,7 +49,7 @@ namespace SenderTests
         [Fact]
         public void TestExpectingTrueWhenCheckIfFileExistsMethodIsCalledFromThisMethod()
         {
-            string filepath = @"D:\a\DummyReviews\DummyReviews\SenderTests\TestSample2.csv";
+            string filepath = @"D:\a\DummyReviews\DummyReviews\SenderTests\TestSample.csv";
             CSVInput csvInput = new CSVInput(filepath);
             Assert.True(csvInput.InputExceptionHandler());
         }
