@@ -37,8 +37,6 @@ namespace SenderTests
             controller.WriteOutput(parsedinput);
             Assert.Equal("sampledata", consoleOutput.OutputOnConsole[0][0]);
         }
-        static void Main()
-        {
-        }
+        
     }
 }
