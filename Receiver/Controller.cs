@@ -29,10 +29,10 @@ namespace Receiver
             string filepath = @"D:\a\DummyReviews\DummyReviews\Receiver\output.csv";
             CSVOutput csvOutput = new CSVOutput(filepath);
             Controller controller = new Controller(consoleInput,csvOutput);
+            Console.WriteLine("----------------------Reading Sender Data----------------------");
             var Output = (List<List<string>>)controller.ReadInput();
             Analyser commentanalyser = new Analyser();
-            var wordCount = commentanalyser.CountWordFrequency(Output);
-            
+            var wordCount = commentanalyser.CountWordFrequency(Output); 
             controller.WriteOutput(wordCount);
         }
     }
