@@ -22,7 +22,7 @@ namespace Receiver
         public IEnumerable<IEnumerable<string>> ReadInput()
         {
             var output = InputInterface.ReadInput();
-            InputInterface.InputExceptionHandler(Output);
+            InputInterface.InputExceptionHandler(output);
             return output;
         }
         public void WriteOutput(IDictionary<string, int> wordCount)
