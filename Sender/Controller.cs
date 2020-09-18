@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 
-namespace InputToSender
+namespace Sender
 {
     public class Controller
     {
