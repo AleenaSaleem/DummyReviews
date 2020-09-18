@@ -9,7 +9,7 @@ namespace Receiver
     {
         IEnumerable<IEnumerable<string>> ReadInput();
     }
-    [ExcludeFromCodeCoverage]
+    
     public class ConsoleInput : IReceiverInput
     {
         public virtual IEnumerable<IEnumerable<string>> ReadInput()
