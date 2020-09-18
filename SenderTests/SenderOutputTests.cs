@@ -5,22 +5,6 @@ using Sender;
 
 namespace SenderTests
 {
-    public class MockConsoleOutput : ISenderOutput
-    {
-        internal List<List<string>> OutputOnConsole = new List<List<string>>();
-        internal int NRows, NColumns;
-        public void WriteOutput(IEnumerable<IEnumerable<string>> data)
-        {
-            var dataList = data.ToList();
-            NRows = ConsoleOutput.GetNumberOfRows(dataList);
-            NColumns = ConsoleOutput.GetNumberOfColumns(dataList);
-            foreach (var newRow in dataList.Select(row => row.ToList()))
-            {
-                OutputOnConsole.Add(newRow);
-            }
-        }
-    }
-
     public class SenderOutputTests
     {
         private readonly List<List<string>> _testInput = new List<List<string>>
