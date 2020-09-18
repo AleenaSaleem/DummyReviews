@@ -7,6 +7,11 @@ namespace SenderTests
 {
     public class ControllerTests
     {
+        const string filepath = @"D:\a\DummyReviews\DummyReviews\SenderTests\TestSample.csv";
+        CsvInput csvInput = new CsvInput(filepath);
+        ConsoleOutput consoleOutput = new ConsoleOutput();
+        Controller controller = new Controller(csvInput, consoleOutput);
+        List<List<string>> parsedInput = (List<List<string>>) controller.ReadInput();
         [Fact]
         public static void TestExpectingAnObjectOfCsvInputTypeToBeAssignedToControllersInputInterface()
         {
@@ -20,22 +25,13 @@ namespace SenderTests
         [Fact]
         public void TestExpectingAppropriateReadInputMethodToBeCalledWhenCalled()
         {
-            const string filepath = @"D:\a\DummyReviews\DummyReviews\SenderTests\TestSample.csv";
-            var csvInput = new CsvInput(filepath);
-            var consoleOutput = new ConsoleOutput();
-            var controller = new Controller(csvInput, consoleOutput);
-            var parsedInput = (List<List<string>>) controller.ReadInput();
+            
             Assert.Equal("sampledata", parsedInput[0][0]);
         }
 
         [Fact]
         public void TestExpectingAppropriateWriteOutputMethodToBeCalledWhenCalledWithTwoDimensionalIEnumerable()
         {
-            const string filepath = @"D:\a\DummyReviews\DummyReviews\SenderTests\TestSample.csv";
-            var csvInput = new CsvInput(filepath);
-            var consoleOutput = new MockConsoleOutput();
-            var controller = new Controller(csvInput, consoleOutput);
-            var parsedInput = (List<List<string>>) controller.ReadInput();
             controller.WriteOutput(parsedInput);
             Assert.Equal("sampledata", consoleOutput.OutputOnConsole[0][0]);
         }
