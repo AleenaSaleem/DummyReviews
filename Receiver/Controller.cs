@@ -10,8 +10,14 @@ namespace Receiver
        public IReceiverOutput OutputInterface;
         public Controller(IReceiverInput InputInterface, IReceiverOutput OutputInterface) 
         {
-            this.InputInterface = InputInterface;
-            this.OutputInterface = OutputInterface;
+            if(InputInterface!=null)
+            {
+                this.InputInterface = InputInterface;
+            }
+            if(OutputInterface!=null)
+            {
+                this.OutputInterface = OutputInterface;
+            }
         }
         public IEnumerable<IEnumerable<string>> ReadInput()
         {
