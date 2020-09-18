@@ -8,32 +8,31 @@ namespace Receiver
     public interface IReceiverInput
     {
         IEnumerable<IEnumerable<string>> ReadInput();
-        void InputExceptionHandler(IEnumerable<IEnumerable<string>> Input);
+        void InputExceptionHandler(IEnumerable<IEnumerable<string>> input);
     }
     public class ConsoleInput : IReceiverInput
     {
         public IEnumerable<IEnumerable<string>> ReadInput()
         {
-            int n_rows, n_cols;
-            n_rows = int.Parse(Console.ReadLine());
-            n_cols = int.Parse(Console.ReadLine());
-            var InputFromSender = new List<List<string>>();
+            int n_rows= int.Parse(Console.ReadLine());
+            int n_cols = int.Parse(Console.ReadLine());
+            var inputFromSender = new List<List<string>>();
             for (int i = 0; i < n_rows; i++)
             {
-                var new_row = new List<string>();
+                var newRow = new List<string>();
                 for (int j = 0; j < n_cols; j++)
                 {
-                    new_row.Add(Console.ReadLine());
-                    ;
+                    newRow.Add(Console.ReadLine());
+                    
                 }
-                InputFromSender.Add(new_row);
+                inputFromSender.Add(newRow);
             }
-            return InputFromSender;
+            return inputFromSender;
         }
 
-        public void InputExceptionHandler(IEnumerable<IEnumerable<string>> Input)
+        public void InputExceptionHandler(IEnumerable<IEnumerable<string>> input)
         {
-            if (!Input.Any())
+            if (!input.Any())
             {
                 throw new InvalidDataException();
             }
