@@ -4,7 +4,7 @@ using Sender;
 
 namespace SenderTests
 {
-    
+
     /*public class MockConsoleOutput : ISenderOutput
     {
         public List<List<string>> OutputOnConsole = new List<List<string>>();
@@ -20,7 +20,7 @@ namespace SenderTests
             }
         }
     }*/
-    
+
     public class SenderOutputTests
     {
         private readonly List<List<string>> _testInput = new List<List<string>>
@@ -34,14 +34,14 @@ namespace SenderTests
         [Fact]
         public void WhenCalledWithTwoDimensionalIEnumerableThenGiveProperRowAndColumnCountAndAccessValuesRowWiseFromData()
         {
-            
+
             var consoleOutput = new ConsoleOutput();
             consoleOutput.WriteOutput(_testInput);
 
-            var testOutput = consoleOutput.outputData;
+            var testOutput = consoleOutput.OutputData;
             Assert.Equal(4, consoleOutput.NRows);
             Assert.Equal(2, consoleOutput.NColumns);
-            Assert.Equal("Date",testOutput[0]);
+            Assert.Equal("Date", testOutput[0]);
             Assert.Equal("12/12/2012", testOutput[2]);
             Assert.Equal("Edge Cases not handled", testOutput[7]);
 
