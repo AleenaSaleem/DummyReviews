@@ -8,12 +8,14 @@ namespace SenderTests
     public class ControllerTests
     {
         const string filepath = @"D:\a\DummyReviews\DummyReviews\SenderTests\TestSample.csv";
-        public CsvInput csvInput = new CsvInput(filepath);
-        public ConsoleOutput consoleOutput = new ConsoleOutput();
+        public CsvInput csvInput;
+        public ConsoleOutput consoleOutput;
        
         [Fact]
         public static void TestExpectingAnObjectOfCsvInputTypeToBeAssignedToControllersInputInterface()
         {
+            csvInput  = new CsvInput(filepath);
+            consoleOutput= = new ConsoleOutput();
             Controller controller = new Controller(csvInput, consoleOutput);
             var type = controller.InputInterface.GetType();
             Debug.Assert(type == csvInput.GetType());
@@ -22,6 +24,8 @@ namespace SenderTests
         [Fact]
         public void TestExpectingAppropriateReadInputMethodToBeCalledWhenCalled()
         {
+            csvInput  = new CsvInput(filepath);
+            consoleOutput= = new ConsoleOutput();
             Controller controller = new Controller(csvInput, consoleOutput);
             public List<List<string>> parsedInput = (List<List<string>>) controller.ReadInput();
             Assert.Equal("sampledata", parsedInput[0][0]);
@@ -30,6 +34,8 @@ namespace SenderTests
         [Fact]
         public void TestExpectingAppropriateWriteOutputMethodToBeCalledWhenCalledWithTwoDimensionalIEnumerable()
         {
+            csvInput  = new CsvInput(filepath);
+            consoleOutput= = new ConsoleOutput();
             Controller controller = new Controller(csvInput, consoleOutput);
             public List<List<string>> parsedInput = (List<List<string>>) controller.ReadInput();
             controller.WriteOutput(parsedInput);
