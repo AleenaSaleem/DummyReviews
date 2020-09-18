@@ -13,7 +13,7 @@ namespace Receiver
                 string[] words = item.Split(' ');
                 foreach(var word in words)
                 {
-                    separatedRow.Add(words[i]);
+                    separatedRow.Add(word);
                 }
             }
             return separatedRow;
@@ -41,7 +41,7 @@ namespace Receiver
             foreach (List<string> row in data)
             {
                 var wordsInARow = GetSeparatedWordsBySpaceFromARow(row);
-                Wordfrequency = AddWordCountInDictionary(wordfrequency, wordsInARow);
+                wordfrequency = AddWordCountInDictionary(wordfrequency, wordsInARow);
             }
             return wordfrequency;
 
