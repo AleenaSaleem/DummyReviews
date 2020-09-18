@@ -28,17 +28,15 @@ namespace Receiver
         }
         public int ReadNumberOfRowsFromConsole()
         {
-            var nRows=default(int);  
+            int nRows=0;  
             nRows = int.Parse(Console.ReadLine());
-            if(nRows!=null) return nRows;
-            return 0;
+            return nRows;
         }
         public int ReadNumberOfColumnsFromConsole()
         {
-            var nCols=default(int);
+            int nCols=0;
             nCols = int.Parse(Console.ReadLine());
-            if(nCols!=null) return nCols;
-            return 0;
+            return nCols;
         }
 
         public void InputExceptionHandler( IEnumerable<IEnumerable<string>> input)
