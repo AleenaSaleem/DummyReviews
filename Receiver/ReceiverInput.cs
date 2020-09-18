@@ -28,7 +28,7 @@ namespace Receiver
             return inputFromSender;
         }
 
-        public void InputExceptionHandler(IEnumerable<IEnumerable<string>> input)
+        public void InputExceptionHandler([NoEnumeration] IEnumerable<IEnumerable<string>> input)
         {
             if (!input.Any()) throw new InvalidDataException();
         }
