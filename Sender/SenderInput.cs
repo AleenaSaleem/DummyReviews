@@ -43,7 +43,7 @@ namespace Sender
                 while (!reader.EndOfStream)
                 {
                     var line = reader.ReadLine();
-                    if (line == null)
+                    if (string.IsNullOrEmpty(line))
                     {
                         continue;
                     }
