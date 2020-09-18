@@ -6,24 +6,24 @@ namespace Receiver
 {
     public class Controller
     {
-       public IReceiverInput InputInterface;
-       public IReceiverOutput OutputInterface;
-        public Controller(IReceiverInput InputInterface, IReceiverOutput OutputInterface) 
+       public readonly IReceiverInput InputInterface;
+       public readonly IReceiverOutput OutputInterface;
+        public Controller(IReceiverInput inputInterface, IReceiverOutput outputInterface) 
         {
             if(InputInterface!=null)
             {
-                this.InputInterface = InputInterface;
+                this.InputInterface = inputInterface;
             }
             if(OutputInterface!=null)
             {
-                this.OutputInterface = OutputInterface;
+                this.OutputInterface = outputInterface;
             }
         }
         public IEnumerable<IEnumerable<string>> ReadInput()
         {
-            var Output = InputInterface.ReadInput();
+            var output = InputInterface.ReadInput();
             InputInterface.InputExceptionHandler(Output);
-            return Output;
+            return output;
         }
         public void WriteOutput(IDictionary<string, int> wordCount)
         {
@@ -36,9 +36,9 @@ namespace Receiver
             CSVOutput csvOutput = new CSVOutput(filepath);
             Controller controller = new Controller(consoleInput,csvOutput);
             Console.WriteLine("----------------------Reading Sender Data----------------------");
-            var Output = (List<List<string>>)controller.ReadInput();
+            var output = (List<List<string>>)controller.ReadInput();
             Analyser commentanalyser = new Analyser();
-            var wordCount = commentanalyser.CountWordFrequency(Output); 
+            var wordCount = commentanalyser.CountWordFrequency(output); 
             controller.WriteOutput(wordCount);
         }
     }
