@@ -26,16 +26,22 @@ namespace Receiver
 
             return inputFromSender;
         }
-        public int ReadNumberOfRowsFromConsole()
+        private int ReadNumberOfRowsFromConsole()
         {
             int nRows=0;  
-            nRows = int.Parse(Console.ReadLine());
+            string temp=Console.ReadLine();
+            if(temp!=null){
+                nRows = int.Parse(temp);
+            }
+            
             return nRows;
         }
-        public int ReadNumberOfColumnsFromConsole()
+        private int ReadNumberOfColumnsFromConsole()
         {
             int nCols=0;
-            nCols = int.Parse(Console.ReadLine());
+            string temp=Console.ReadLine();
+            if(temp!=null)
+                nCols = int.Parse(temp);
             return nCols;
         }
 
