@@ -25,7 +25,7 @@ namespace ReceiverTests
         {
             ConsoleInput consoleInput = (ConsoleInput)this.GetMockConsoleInput();
             string filepath = @"E:\BootCamp\ReceiverInput\output.csv";
-            CsvOutput csvOutput = new CsvOutput(filepath);
+            CSVOutput csvOutput = new CSVOutput(filepath);
             Controller controller = new Controller(consoleInput, csvOutput);
             Assert.Equal(consoleInput, controller.InputInterface);
             Assert.Equal(csvOutput, controller.OutputInterface);
