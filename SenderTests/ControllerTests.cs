@@ -30,7 +30,7 @@ namespace SenderTests
         public void TestExpectingAppropriateWriteOutputMethodToBeCalledWhenCalledWithTwoDimensionalIEnumerable()
         {
             controller.WriteOutput(parsedInput);
-            Assert.Equal("sampledata", consoleOutput.outputData[0][0]);
+            Assert.Equal("sampledata", consoleOutput.OutputData[0]);
         }
     }
 }
