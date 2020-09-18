@@ -16,9 +16,7 @@ namespace Receiver
 
         public IEnumerable<IEnumerable<string>> ReadInput()
         {
-            var output = InputInterface.ReadInput();
-            InputInterface.InputExceptionHandler(output);
-            return output;
+            return InputInterface.ReadInput();
         }
 
         public void WriteOutput(IDictionary<string, int> wordCount)
