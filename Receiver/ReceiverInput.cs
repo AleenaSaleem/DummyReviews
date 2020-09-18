@@ -8,7 +8,6 @@ namespace Receiver
     public interface IReceiverInput
     {
         IEnumerable<IEnumerable<string>> ReadInput();
-        void InputExceptionHandler(IEnumerable<IEnumerable<string>> input);
     }
 
     public class ConsoleInput : IReceiverInput
@@ -28,7 +27,7 @@ namespace Receiver
             return inputFromSender;
         }
 
-        public void InputExceptionHandler([NoEnumeration] IEnumerable<IEnumerable<string>> input)
+        public void InputExceptionHandler( IEnumerable<IEnumerable<string>> input)
         {
             if (!input.Any()) throw new InvalidDataException();
         }
