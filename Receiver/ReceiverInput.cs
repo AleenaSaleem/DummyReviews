@@ -14,17 +14,31 @@ namespace Receiver
     {
         public IEnumerable<IEnumerable<string>> ReadInput()
         {
-            var n_rows = int.Parse(Console.ReadLine());
-            var n_cols = int.Parse(Console.ReadLine());
+            var nRows = ReadNumberOfRowsFromConsole();
+            var nCols = ReadNumberOfColumnsFromConsole();
             var inputFromSender = new List<List<string>>();
-            for (var i = 0; i < n_rows; i++)
+            for (var i = 0; i < nRows; i++)
             {
                 var newRow = new List<string>();
-                for (var j = 0; j < n_cols; j++) newRow.Add(Console.ReadLine());
+                for (var j = 0; j < nCols; j++) newRow.Add(Console.ReadLine());
                 inputFromSender.Add(newRow);
             }
 
             return inputFromSender;
+        }
+        public int ReadNumberOfRowsFromConsole()[
+        {
+            var nRows=default(int);  
+            nRows = int.Parse(Console.ReadLine());
+            if(nRows!=null) return nRows;
+            return 0;
+        }
+        public int ReadNumberOfColumnsFromConsole()[
+        {
+            var nCols=default(int);
+            nCols = int.Parse(Console.ReadLine());
+            if(nCols!=null) return nCols;
+            return 0;
         }
 
         public void InputExceptionHandler( IEnumerable<IEnumerable<string>> input)
