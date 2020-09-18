@@ -12,7 +12,7 @@ namespace Sender
     
     public class ConsoleOutput : ISenderOutput
     {
-        public List<string> OutputData = new List<string>();
+        public List<string> outputData = new List<string>();
         public int NRows, NColumns;
         public void WriteOutput(IEnumerable<IEnumerable<string>> data)
         {
@@ -24,7 +24,7 @@ namespace Sender
             foreach (var value in dataList.SelectMany(row => row))
             {
                 Console.WriteLine(value);
-                OutputData.Add(value);
+                outputData.Add(value);
             }
         }
 
