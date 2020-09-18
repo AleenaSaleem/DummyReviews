@@ -30,13 +30,15 @@ namespace ReceiverTests
 
     public class ReceiverOutputTests
     {
+        MockCVSOutput mockOutput = new MockCSVOutput("Random_file_path");
+         IDictionary<string, int> dict = new Dictionary<string, int>()
+            {
+                {"sample1",1}
+                {"sample2",2}
+            };
         [Fact]
         public void TestExpectingStatusOfFileWrittenAsTrueWhenCalledWithDictionaryOfWordFrequnecy()
         {
-            var mockOutput = new MockCSVOutput("Random_file_path");
-            IDictionary<string, int> dict = new Dictionary<string, int>();
-            dict.Add("sample1", 1);
-            dict.Add("sample2", 2);
             mockOutput.WriteOutput(dict);
             Assert.True(mockOutput.OutputStatus);
         }
@@ -44,10 +46,6 @@ namespace ReceiverTests
         [Fact]
         public void TestExpectingValidMockFileOutputWhenCalledWithDictionaryOfWordFrequnecy()
         {
-            var mockOutput = new MockCSVOutput("Random_file_path");
-            IDictionary<string, int> dict = new Dictionary<string, int>();
-            dict.Add("sample1", 1);
-            dict.Add("sample2", 2);
             mockOutput.WriteOutput(dict);
             Assert.Equal("sample1,1", mockOutput.MockFileOutput[0]);
         }
