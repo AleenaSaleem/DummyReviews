@@ -1,24 +1,22 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Receiver
 {
     public interface IReceiverOutput
     {
-        void WriteOutput(IDictionary<string, int> WordFrequency);
+        void WriteOutput(IDictionary<string, int> wordFrequency);
     }
     public class CSVOutput:IReceiverOutput
     {
-        string filepath;
+        readonly string filepath;
         public CSVOutput(string filepath)
         {
             this.filepath = filepath;
         }
-        public void WriteOutput(IDictionary<string, int> WordFrequency)
+        public void WriteOutput(IDictionary<string, int> wordFrequency)
         {
             var csv = new StringBuilder();
             foreach(var line in WordFrequency)
