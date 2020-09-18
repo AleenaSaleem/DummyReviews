@@ -11,7 +11,7 @@ namespace Receiver
             foreach(var item in row)
             {
                 string[] words = item.Split(' ');
-                for(int i = 0; i < words.Length; i++)
+                foreach(var word in words)
                 {
                     separatedRow.Add(words[i]);
                 }
@@ -36,14 +36,14 @@ namespace Receiver
         }
         public IDictionary<string, int> CountWordFrequency(IEnumerable<IEnumerable<string>> data)
         {
-            IDictionary<string, int> Wordfrequency = new Dictionary<string, int>();
+            IDictionary<string, int> wordfrequency = new Dictionary<string, int>();
 
             foreach (List<string> row in data)
             {
                 var wordsInARow = GetSeparatedWordsBySpaceFromARow(row);
-                Wordfrequency = AddWordCountInDictionary(Wordfrequency, wordsInARow);
+                Wordfrequency = AddWordCountInDictionary(wordfrequency, wordsInARow);
             }
-            return Wordfrequency;
+            return wordfrequency;
 
         }
     }
