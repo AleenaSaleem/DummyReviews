@@ -9,10 +9,10 @@ namespace Sender
         void WriteOutput(IEnumerable<IEnumerable<string>> data);
     }
 
-    
+
     public class ConsoleOutput : ISenderOutput
     {
-        public List<string> outputData = new List<string>();
+        public readonly List<string> OutputData = new List<string>();
         public int NRows, NColumns;
         public void WriteOutput(IEnumerable<IEnumerable<string>> data)
         {
@@ -24,7 +24,7 @@ namespace Sender
             foreach (var value in dataList.SelectMany(row => row))
             {
                 Console.WriteLine(value);
-                outputData.Add(value);
+                OutputData.Add(value);
             }
         }
 
