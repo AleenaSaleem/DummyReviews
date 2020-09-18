@@ -2,8 +2,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
+
 namespace Sender
 {
+
     public interface ISenderInput
     {
         IEnumerable<IEnumerable<string>> ReadInput();
@@ -12,39 +14,48 @@ namespace Sender
 
     public class CsvInput : ISenderInput
     {
-        public List<List<string>> CsvData = new List<List<string>>();
-        public string Filepath;
-
+        public readonly string Filepath;
+        private readonly List<List<string>> _csvData = new List<List<string>>();
         public CsvInput(string filepath)
         {
-            Filepath = filepath;
+            this.Filepath = filepath;
         }
-
+        private void CheckIfFileExists()
+        {
+            if (!File.Exists(Filepath))
+            {
+                throw new FileNotFoundException();
+            }
+        }
+        
         public bool InputExceptionHandler()
         {
             CheckIfFileExists();
             return true;
-        }
 
+        }
+        
         public IEnumerable<IEnumerable<string>> ReadInput()
         {
             using (var reader = new StreamReader(Filepath))
             {
+
                 while (!reader.EndOfStream)
                 {
                     var line = reader.ReadLine();
+                    if (line == null)
+                    {
+                        continue;
+                    }
                     var values = line.Split(',');
                     //Note: The first row in this list contains headers from CSV file
-                    CsvData.Add(values.ToList());
+                    _csvData.Add(values.ToList());
                 }
+
+
             }
-
-            return CsvData;
+            return _csvData;
         }
 
-        public void CheckIfFileExists()
-        {
-            if (!File.Exists(Filepath)) throw new FileNotFoundException();
-        }
     }
 }
