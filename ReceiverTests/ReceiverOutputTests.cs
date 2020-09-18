@@ -33,7 +33,7 @@ namespace ReceiverTests
         MockCVSOutput mockOutput = new MockCSVOutput("Random_file_path");
          IDictionary<string, int> dict = new Dictionary<string, int>()
             {
-                {"sample1",1}
+                {"sample1",1},
                 {"sample2",2}
             };
         [Fact]
