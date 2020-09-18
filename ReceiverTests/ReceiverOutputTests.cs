@@ -1,53 +1,60 @@
 using System.Collections.Generic;
-using Receiver;
 using Xunit;
+using Receiver;
 
 namespace ReceiverTests
 {
-    public class MockCSVOutput : IReceiverOutput
+    
+    /*public class MockCSVOutput : IReceiverOutput
     {
-        private string filepath;
+        string filepath;
         public List<string> MockFileOutput = new List<string>();
         public bool OutputStatus;
-
         public MockCSVOutput(string filepath)
         {
             this.filepath = filepath;
-            OutputStatus = false;
+            this.OutputStatus = false;
         }
-
         public void WriteOutput(IDictionary<string, int> WordFrequency)
         {
             foreach (var line in WordFrequency)
             {
                 var newLine = string.Format("{0},{1}", line.Key, line.Value);
                 MockFileOutput.Add(newLine);
+                
             }
-
-            OutputStatus = true;
+            this.OutputStatus = true;
         }
-    }
-
+    }*/
     public class ReceiverOutputTests
     {
-       MockCSVOutput mockOutput = new MockCSVOutput("Random_file_path");
-         IDictionary<string, int> dict = new Dictionary<string, int>()
-            {
-                {"sample1",1},
-                {"sample2",2}
-            };
         [Fact]
-        public void TestExpectingStatusOfFileWrittenAsTrueWhenCalledWithDictionaryOfWordFrequnecy()
+        public void TestExpectingStatusOfFileWrittenAsTrueWhenCalledWithDictionaryOfWordFrequency()
         {
-            mockOutput.WriteOutput(dict);
-            Assert.True(mockOutput.OutputStatus);
+            CsvOutput csvOutput = new CsvOutput("Random_file_path");
+            IDictionary<string, int> dict = new Dictionary<string, int>();
+            dict.Add("sample1", 1);
+            dict.Add("sample2", 2);
+            csvOutput.WriteOutput(dict);
+            Assert.True(csvOutput.outputStatus);
         }
-
         [Fact]
-        public void TestExpectingValidMockFileOutputWhenCalledWithDictionaryOfWordFrequnecy()
+        public void TestExpectingValidMockFileOutputWhenCalledWithDictionaryOfWordFrequency()
         {
+            CsvOutput mockOutput = new CsvOutput("Random_file_path");
+            IDictionary<string, int> dict = new Dictionary<string, int>();
+            dict.Add("sample1", 1);
+            dict.Add("sample2", 2);
             mockOutput.WriteOutput(dict);
-            Assert.Equal("sample1,1", mockOutput.MockFileOutput[0]);
+            Assert.Equal("sample1,1",mockOutput.fileOutput[0]);
+        }
+        [Fact]
+        public void TestExpectingFileOutputToBeEmptyWhenCalledWithEmptyIDictionary()
+        {
+            CsvOutput mockOutput = new CsvOutput("Random_file_path");
+            IDictionary<string, int> dict = new Dictionary<string, int>();
+            mockOutput.WriteOutput(dict);
+            Assert.True(mockOutput.fileOutput.Count==0);
         }
     }
 }
