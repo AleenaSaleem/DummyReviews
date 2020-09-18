@@ -8,21 +8,7 @@ namespace Sender
     {
         void WriteOutput(IEnumerable<IEnumerable<string>> data);
     }
-
-    public class MockConsoleOutput : ISenderOutput
-    {
-        public int NRows, NColumns;
-        public List<List<string>> OutputOnConsole = new List<List<string>>();
-
-        public void WriteOutput(IEnumerable<IEnumerable<string>> data)
-        {
-            var dataList = data.ToList();
-            NRows = ConsoleOutput.GetNumberOfRows(dataList);
-            NColumns = ConsoleOutput.GetNumberOfColumns(dataList);
-            foreach (var newRow in dataList.Select(row => row.ToList())) OutputOnConsole.Add(newRow);
-        }
-    }
-
+    
     public class ConsoleOutput : ISenderOutput
     {
         public void WriteOutput(IEnumerable<IEnumerable<string>> data)
