@@ -11,32 +11,34 @@ namespace SenderTests
         [Fact]
         public static void TestExpectingAnObjectOfCsvInputTypeToBeAssignedToControllersInputInterface()
         {
-            CsvInput csvInput  = new CsvInput(filepath);
-            ConsoleOutput consoleOutput= = new ConsoleOutput();
+            CsvInput csvInput = new CsvInput(filepath);
+            ConsoleOutput consoleOutput = new ConsoleOutput();
             Controller controller = new Controller(csvInput, consoleOutput);
-            var type = controller.InputInterface.GetType();
+            var type = controller.inputInterface.GetType();
             Debug.Assert(type == csvInput.GetType());
         }
 
-        [Fact]
-        public void TestExpectingAppropriateReadInputMethodToBeCalledWhenCalled()
-        {
-            CsvInput csvInput  = new CsvInput(filepath);
-            ConsoleOutput consoleOutput= = new ConsoleOutput();
-            Controller controller = new Controller(csvInput, consoleOutput);
-            public List<List<string>> parsedInput = (List<List<string>>) controller.ReadInput();
-            Assert.Equal("sampledata", parsedInput[0][0]);
-        }
+        
 
         [Fact]
         public void TestExpectingAppropriateWriteOutputMethodToBeCalledWhenCalledWithTwoDimensionalIEnumerable()
         {
-            CsvInput csvInput  = new CsvInput(filepath);
-            ConsoleOutput consoleOutput= = new ConsoleOutput();
+            CsvInput csvInput = new CsvInput(filepath);
+            ConsoleOutput consoleOutput =new ConsoleOutput();
             Controller controller = new Controller(csvInput, consoleOutput);
-            public List<List<string>> parsedInput = (List<List<string>>) controller.ReadInput();
+            List<List<string>> parsedInput = (List<List<string>>)controller.ReadInput();
             controller.WriteOutput(parsedInput);
             Assert.Equal("sampledata", consoleOutput.outputData[0]);
+
+        }
+        [Fact]
+        public void TestExpectingAppropriateReadInputMethodToBeCalledWhenCalled()
+        {
+            CsvInput csvInput = new CsvInput(filepath);
+            ConsoleOutput consoleOutput = new ConsoleOutput();
+            Controller controller = new Controller(csvInput, consoleOutput);
+            List<List<string>> parsedInput = (List<List<string>>)controller.ReadInput();
+            Assert.Equal("sampledata", parsedInput[0][0]);
         }
     }
 }
