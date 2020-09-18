@@ -5,7 +5,7 @@ namespace Sender
 {
     public class Filter
     {
-        public IEnumerable<string> GetFilteredRowByColumnNos(IEnumerable<string> row, IEnumerable<int> columnNos)
+        private IEnumerable<string> GetFilteredRowByColumnNos(IEnumerable<string> row, IEnumerable<int> columnNos)
         {
             var rowList = (List<string>) row;
             var columnNosList = columnNos.ToList();
