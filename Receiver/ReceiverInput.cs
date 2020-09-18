@@ -26,14 +26,14 @@ namespace Receiver
 
             return inputFromSender;
         }
-        public int ReadNumberOfRowsFromConsole()[
+        public int ReadNumberOfRowsFromConsole()
         {
             var nRows=default(int);  
             nRows = int.Parse(Console.ReadLine());
             if(nRows!=null) return nRows;
             return 0;
         }
-        public int ReadNumberOfColumnsFromConsole()[
+        public int ReadNumberOfColumnsFromConsole()
         {
             var nCols=default(int);
             nCols = int.Parse(Console.ReadLine());
