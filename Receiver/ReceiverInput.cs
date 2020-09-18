@@ -14,8 +14,8 @@ namespace Receiver
     {
         public virtual IEnumerable<IEnumerable<string>> ReadInput()
         {
-            var nRows = ReadNumberOfRowsFromConsole();
-            var nCols = ReadNumberOfColumnsFromConsole();
+            var nRows = ReadNumberOfRows();
+            var nCols = ReadNumberOfColumns();
             var inputFromSender = new List<List<string>>();
             for (var i = 0; i < nRows; i++)
             {
