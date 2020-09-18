@@ -30,7 +30,7 @@ namespace ReceiverTests
 
     public class ReceiverOutputTests
     {
-        MockCVSOutput mockOutput = new MockCSVOutput("Random_file_path");
+       MockCSVOutput mockOutput = new MockCSVOutput("Random_file_path");
          IDictionary<string, int> dict = new Dictionary<string, int>()
             {
                 {"sample1",1},
