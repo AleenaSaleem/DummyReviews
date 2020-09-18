@@ -25,12 +25,13 @@ namespace Sender
         [ExcludeFromCodeCoverage]
         static void Main()
         {
-            string filepath = @"D:\a\DummyReviews\DummyReviews\SenderTests\TestSample.csv";
+            string filepath = @"D:\a\DummyReviews\DummyReviews\SenderTests\Comments.csv";
             CsvInput csvInput = new CsvInput(filepath);
             ConsoleOutput consoleOutput = new ConsoleOutput();
             Controller controller = new Controller(csvInput, consoleOutput);
             List<List<string>> parsedinput = (List<List<string>>)controller.ReadInput();
-            controller.WriteOutput(parsedinput);
+            var filteredInput = (List<List<string>>)Filter.GetDataFilteredByColumnNos(parsedinput, new List<int> { 1 });
+            controller.WriteOutput(filteredInput);
         }
     }
 }
