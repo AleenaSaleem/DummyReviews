@@ -38,7 +38,7 @@ namespace SenderTests
             var consoleOutput = new ConsoleOutput();
             consoleOutput.WriteOutput(_testInput);
 
-            var testOutput = consoleOutput.OutputData;
+            var testOutput = consoleOutput.outputData;
             Assert.Equal(4, consoleOutput.NRows);
             Assert.Equal(2, consoleOutput.NColumns);
             Assert.Equal("Date",testOutput[0]);
