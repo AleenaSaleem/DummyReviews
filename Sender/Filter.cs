@@ -5,7 +5,7 @@ namespace Sender
 {
     public class Filter
     {
-        public static IEnumerable<string> GetFilteredRowByColumnNos(IEnumerable<string> row, IEnumerable<int> columnNos)
+        public IEnumerable<string> GetFilteredRowByColumnNos(IEnumerable<string> row, IEnumerable<int> columnNos)
         {
             var rowList = (List<string>) row;
             var columnNosList = columnNos.ToList();
@@ -13,7 +13,7 @@ namespace Sender
             return rowList.Where((value, i) => columnNosList.Contains(i)).ToList();
         }
 
-        public static IEnumerable<IEnumerable<string>> GetDataFilteredByColumnNos
+        public IEnumerable<IEnumerable<string>> GetDataFilteredByColumnNos
             (IEnumerable<IEnumerable<string>> data, IEnumerable<int> columnNos)
         {
             var outputData = new List<List<string>>();
@@ -29,7 +29,7 @@ namespace Sender
             return outputData;
         }
 
-        public static IEnumerable<IEnumerable<string>> GetDataFilteredByColumnRange
+        public IEnumerable<IEnumerable<string>> GetDataFilteredByColumnRange
             (IEnumerable<IEnumerable<string>> data, int startCol, int endCol)
         {
             var inputData = (List<List<string>>) data;
