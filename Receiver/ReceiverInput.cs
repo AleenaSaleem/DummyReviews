@@ -2,14 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-
+using System.Diagnostics.CodeAnalysis;
 namespace Receiver
 {
     public interface IReceiverInput
     {
         IEnumerable<IEnumerable<string>> ReadInput();
     }
-
+    [ExcludeFromCodeCoverage]
     public class ConsoleInput : IReceiverInput
     {
         public virtual IEnumerable<IEnumerable<string>> ReadInput()
