@@ -1,18 +1,17 @@
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
-namespace Sender
+namespace InputToSender
 {
     public class Controller
     {
-        public ISenderInput InputInterface;
-        public ISenderOutput OutputInterface;
-
-        public Controller(ISenderInput InputInterface, ISenderOutput OutputInterface)
+        public readonly ISenderInput InputInterface;
+        public readonly ISenderOutput OutputInterface;
+        public Controller(ISenderInput inputInterface, ISenderOutput outputInterface)
         {
-            if (InputInterface != null) this.InputInterface = InputInterface;
-            if (OutputInterface != null) this.OutputInterface = OutputInterface;
+            this.InputInterface = inputInterface;
+            this.OutputInterface = outputInterface;
         }
-
         public IEnumerable<IEnumerable<string>> ReadInput()
         {
             InputInterface.InputExceptionHandler();
@@ -23,15 +22,15 @@ namespace Sender
         {
             OutputInterface.WriteOutput(parsedData);
         }
-
-        private static void Main(string[] args)
+        [ExcludeFromCodeCoverage]
+        static void Main()
         {
-            const string filepath = @"D:\a\DummyReviews\DummyReviews\Sender\Comments.csv";
-            var csvInput = new CsvInput(filepath);
-            var consoleOutput = new ConsoleOutput();
-            var controller = new Controller(csvInput, consoleOutput);
-            var parsedInput = (List<List<string>>) controller.ReadInput();
-            controller.WriteOutput(parsedInput);
+            string filepath = @"D:\a\DummyReviews\DummyReviews\SenderTests\TestSample.csv";
+            CsvInput csvInput = new CsvInput(filepath);
+            ConsoleOutput consoleOutput = new ConsoleOutput();
+            Controller controller = new Controller(csvInput, consoleOutput);
+            List<List<string>> parsedinput = (List<List<string>>)controller.ReadInput();
+            controller.WriteOutput(parsedinput);
         }
     }
 }
