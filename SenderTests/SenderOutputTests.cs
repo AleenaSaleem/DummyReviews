@@ -1,24 +1,23 @@
 using System.Collections.Generic;
-using System.Linq;
-using Xunit;
 using Sender;
+using Xunit;
 
 namespace SenderTests
 {
     public class SenderOutputTests
     {
         private readonly List<List<string>> _testInput = new List<List<string>>
-            {
-                new List<string> { "Date", "Comment" },
-                new List<string> { "12/12/2012", "All good" },
-                new List<string> { "11/11/2011", "Remove duplication" },
-                new List<string> { "30/11/2015", "Edge Cases not handled" }
-            };
+        {
+            new List<string> {"Date", "Comment"},
+            new List<string> {"12/12/2012", "All good"},
+            new List<string> {"11/11/2011", "Remove duplication"},
+            new List<string> {"30/11/2015", "Edge Cases not handled"}
+        };
 
         [Fact]
-        public void WhenCalledWithTwoDimensionalIEnumerableThenGiveProperRowAndColumnCountAndAccessValuesRowWiseFromData()
+        public void
+            WhenCalledWithTwoDimensionalIEnumerableThenGiveProperRowAndColumnCountAndAccessValuesRowWiseFromData()
         {
-
             var mockConsoleOutput = new MockConsoleOutput();
             mockConsoleOutput.WriteOutput(_testInput);
 
@@ -41,6 +40,5 @@ namespace SenderTests
             var nRows = ConsoleOutput.GetNumberOfRows(_testInput);
             Assert.True(nRows == 4);
         }
-
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Receiver;
 using Xunit;
+
 namespace ReceiverTests
 {
     public class AnalyserTests
@@ -8,16 +9,17 @@ namespace ReceiverTests
         [Fact]
         public void TestExpectingIEnumenrableContainingWordsSeparatedBYSpaceWhenCalledWithValidIEnumerable()
         {
-            List<string> TestInput = new List<string>();
+            var TestInput = new List<string>();
             TestInput.Add("this is sample test string");
-            var Output = (List<string>)Analyser.GetSeparatedWordsBySpaceFromARow(TestInput);
+            var Output = (List<string>) Analyser.GetSeparatedWordsBySpaceFromARow(TestInput);
             Assert.Equal("this", Output[0]);
             Assert.Equal("is", Output[1]);
         }
+
         [Fact]
         public void TestExpectingAnUpdatedDictionaryOfWordFrequencyWhenCalledWithDictionaryToUpdateAndIEnumerable()
         {
-            List<string> TestInput = new List<string>();
+            var TestInput = new List<string>();
             TestInput.Add("this");
             TestInput.Add("sample");
             IDictionary<string, int> DictToUpdate = new Dictionary<string, int>();
@@ -27,14 +29,15 @@ namespace ReceiverTests
             Assert.True(updatedDict["this"] == 1);
             Assert.True(updatedDict["sample"] == 2);
         }
+
         [Fact]
         public void TestExpectingWordFrequencyOfAllWordsWhenCalledWithATwoDimensionalIEnumerable()
         {
-            Analyser TestAnalyser = new Analyser();
+            var TestAnalyser = new Analyser();
             var TestInput = new List<List<string>>();
-            List<string> tempList1 = new List<string>();
+            var tempList1 = new List<string>();
             tempList1.Add("sample string1");
-            List<string> tempList2 = new List<string>();
+            var tempList2 = new List<string>();
             tempList2.Add("sample string2");
             TestInput.Add(tempList1);
             TestInput.Add(tempList2);

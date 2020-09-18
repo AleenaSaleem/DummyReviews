@@ -6,17 +6,13 @@ namespace Sender
     {
         public ISenderInput InputInterface;
         public ISenderOutput OutputInterface;
+
         public Controller(ISenderInput InputInterface, ISenderOutput OutputInterface)
         {
-            if(InputInterface!=null)
-            {
-                this.InputInterface = InputInterface;
-            }
-            if(OutputInterface!=null)
-            {
-                this.OutputInterface = OutputInterface;
-            }
+            if (InputInterface != null) this.InputInterface = InputInterface;
+            if (OutputInterface != null) this.OutputInterface = OutputInterface;
         }
+
         public IEnumerable<IEnumerable<string>> ReadInput()
         {
             InputInterface.InputExceptionHandler();
@@ -27,13 +23,14 @@ namespace Sender
         {
             OutputInterface.WriteOutput(parsedData);
         }
-        static void Main(string[] args)
+
+        private static void Main(string[] args)
         {
             const string filepath = @"D:\a\DummyReviews\DummyReviews\Sender\Comments.csv";
             var csvInput = new CsvInput(filepath);
             var consoleOutput = new ConsoleOutput();
             var controller = new Controller(csvInput, consoleOutput);
-            var parsedInput = (List<List<string>>)controller.ReadInput();
+            var parsedInput = (List<List<string>>) controller.ReadInput();
             controller.WriteOutput(parsedInput);
         }
     }

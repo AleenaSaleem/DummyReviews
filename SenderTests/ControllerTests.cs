@@ -1,7 +1,8 @@
-using System.Diagnostics;
-using Xunit;
 using System.Collections.Generic;
+using System.Diagnostics;
 using Sender;
+using Xunit;
+
 namespace SenderTests
 {
     public class ControllerTests
@@ -23,7 +24,7 @@ namespace SenderTests
             var csvInput = new CsvInput(filepath);
             var consoleOutput = new ConsoleOutput();
             var controller = new Controller(csvInput, consoleOutput);
-            var parsedInput = (List<List<string>>)controller.ReadInput();
+            var parsedInput = (List<List<string>>) controller.ReadInput();
             Assert.Equal("sampledata", parsedInput[0][0]);
         }
 
@@ -34,7 +35,7 @@ namespace SenderTests
             var csvInput = new CsvInput(filepath);
             var consoleOutput = new MockConsoleOutput();
             var controller = new Controller(csvInput, consoleOutput);
-            var parsedInput = (List<List<string>>)controller.ReadInput();
+            var parsedInput = (List<List<string>>) controller.ReadInput();
             controller.WriteOutput(parsedInput);
             Assert.Equal("sampledata", consoleOutput.OutputOnConsole[0][0]);
         }

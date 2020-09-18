@@ -14,7 +14,7 @@ namespace Sender
         }
 
         public static IEnumerable<IEnumerable<string>> GetDataFilteredByColumnNos
-            (IEnumerable<IEnumerable<string>> data,IEnumerable<int> columnNos)
+            (IEnumerable<IEnumerable<string>> data, IEnumerable<int> columnNos)
         {
             var outputData = new List<List<string>>();
 
@@ -32,20 +32,16 @@ namespace Sender
         public static IEnumerable<IEnumerable<string>> GetDataFilteredByColumnRange
             (IEnumerable<IEnumerable<string>> data, int startCol, int endCol)
         {
-            var inputData = (List<List<string>>)data;
+            var inputData = (List<List<string>>) data;
             var outputData = new List<List<string>>();
             foreach (var row in inputData)
             {
                 var temp = new List<string>();
-                for (var j = startCol; j <= endCol; j++)
-                {
-                    temp.Add(row[j]);
-                }
+                for (var j = startCol; j <= endCol; j++) temp.Add(row[j]);
                 outputData.Add(temp);
             }
 
             return outputData;
         }
-
     }
 }

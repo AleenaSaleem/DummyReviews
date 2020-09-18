@@ -8,20 +8,18 @@ namespace Sender
     {
         void WriteOutput(IEnumerable<IEnumerable<string>> data);
     }
-    
+
     public class MockConsoleOutput : ISenderOutput
     {
-        public List<List<string>> OutputOnConsole = new List<List<string>>();
         public int NRows, NColumns;
+        public List<List<string>> OutputOnConsole = new List<List<string>>();
+
         public void WriteOutput(IEnumerable<IEnumerable<string>> data)
         {
             var dataList = data.ToList();
             NRows = ConsoleOutput.GetNumberOfRows(dataList);
             NColumns = ConsoleOutput.GetNumberOfColumns(dataList);
-            foreach (var newRow in dataList.Select(row => row.ToList()))
-            {
-                OutputOnConsole.Add(newRow);
-            }
+            foreach (var newRow in dataList.Select(row => row.ToList())) OutputOnConsole.Add(newRow);
         }
     }
 
@@ -34,10 +32,7 @@ namespace Sender
             var nColumns = GetNumberOfColumns(dataList);
             Console.WriteLine(nRows);
             Console.WriteLine(nColumns);
-            foreach (var value in dataList.SelectMany(row => row))
-            {
-                Console.WriteLine(value);
-            }
+            foreach (var value in dataList.SelectMany(row => row)) Console.WriteLine(value);
         }
 
         public static int GetNumberOfColumns(IEnumerable<IEnumerable<string>> data)
@@ -48,6 +43,7 @@ namespace Sender
                 colCount += row.Count();
                 break;
             }
+
             return colCount;
         }
 

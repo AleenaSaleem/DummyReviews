@@ -9,25 +9,27 @@ namespace Receiver
     {
         void WriteOutput(IDictionary<string, int> wordFrequency);
     }
-    public class CSVOutput:IReceiverOutput
+
+    public class CSVOutput : IReceiverOutput
     {
-        readonly string filepath;
+        private readonly string filepath;
+
         public CSVOutput(string filepath)
         {
             this.filepath = filepath;
         }
+
         public void WriteOutput(IDictionary<string, int> wordFrequency)
         {
             var csv = new StringBuilder();
-            foreach(var line in wordFrequency)
+            foreach (var line in wordFrequency)
             {
                 var newLine = string.Format("{0},{1}", line.Key, line.Value);
                 Console.WriteLine(newLine);
                 csv.AppendLine(newLine);
             }
-           
+
             File.WriteAllText(filepath, csv.ToString());
         }
     }
 }
-
