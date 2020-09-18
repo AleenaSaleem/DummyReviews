@@ -59,5 +59,13 @@ namespace SenderTests
             CsvInput csvInput = new CsvInput(filepath);
             Assert.True(csvInput.InputExceptionHandler());
         }
+        [Fact]
+        public void TestExpectingEmptyLineToBeIgnoredFromInputWhenCalled()
+        {
+            string filepath = @"D:\a\DummyReviews\DummyReviews\SenderTests\EmptyLineSample.csv";
+            CsvInput csvInput = new CsvInput(filepath);
+            var output = csvInput.ReadInput();
+            Assert.True(output.Count()==4);
+        }
     }
 }
