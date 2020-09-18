@@ -14,7 +14,7 @@ namespace SenderTests
             CsvInput csvInput = new CsvInput(filepath);
             ConsoleOutput consoleOutput = new ConsoleOutput();
             Controller controller = new Controller(csvInput, consoleOutput);
-            var type = controller.inputInterface.GetType();
+            var type = controller.InputInterface.GetType();
             Debug.Assert(type == csvInput.GetType());
         }
 
