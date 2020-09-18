@@ -28,9 +28,10 @@ namespace Sender
             string filepath = @"D:\a\DummyReviews\DummyReviews\Sender\Comments.csv";
             CsvInput csvInput = new CsvInput(filepath);
             ConsoleOutput consoleOutput = new ConsoleOutput();
+            Filter filter = new Filter();
             Controller controller = new Controller(csvInput, consoleOutput);
             List<List<string>> parsedinput = (List<List<string>>)controller.ReadInput();
-            var filteredInput = (List<List<string>>)Filter.GetDataFilteredByColumnNos(parsedinput, new List<int> { 1 });
+            var filteredInput = (List<List<string>>)filter.GetDataFilteredByColumnNos(parsedinput, new List<int> { 1 });
             controller.WriteOutput(filteredInput);
         }
     }
