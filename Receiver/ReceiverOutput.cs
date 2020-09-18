@@ -19,7 +19,7 @@ namespace Receiver
         public void WriteOutput(IDictionary<string, int> wordFrequency)
         {
             var csv = new StringBuilder();
-            foreach(var line in WordFrequency)
+            foreach(var line in wordFrequency)
             {
                 var newLine = string.Format("{0},{1}", line.Key, line.Value);
                 Console.WriteLine(newLine);
