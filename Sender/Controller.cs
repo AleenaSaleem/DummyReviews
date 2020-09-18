@@ -25,7 +25,7 @@ namespace Sender
         [ExcludeFromCodeCoverage]
         static void Main()
         {
-            string filepath = @"D:\a\DummyReviews\DummyReviews\SenderTests\Comments.csv";
+            string filepath = @"D:\a\DummyReviews\DummyReviews\Sender\Comments.csv";
             CsvInput csvInput = new CsvInput(filepath);
             ConsoleOutput consoleOutput = new ConsoleOutput();
             Controller controller = new Controller(csvInput, consoleOutput);
