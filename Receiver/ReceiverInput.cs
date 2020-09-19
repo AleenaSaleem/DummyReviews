@@ -8,6 +8,7 @@ namespace Receiver
     {
         IEnumerable<IEnumerable<string>> ReadInput();
     }
+
     [ExcludeFromCodeCoverage]
     public class ConsoleInput : IReceiverInput
     {
@@ -15,7 +16,7 @@ namespace Receiver
         {
             int nRows = ReadNumberOfRows();
             int nColumns = ReadNumberOfColumns();
-            
+
             var inputFromSender = new List<List<string>>();
             for (int i = 0; i < nRows; i++)
             {
@@ -28,21 +29,23 @@ namespace Receiver
             }
             return inputFromSender;
         }
-        public virtual int ReadNumberOfRows()
+
+        protected int ReadNumberOfRows()
         {
             int nRows = 0;
             string temp = Console.ReadLine();
-            if (string.IsNullOrEmpty(temp))
+            if (!string.IsNullOrEmpty(temp))
             {
                 nRows = int.Parse(temp);
             }
             return nRows;
         }
-        public virtual int ReadNumberOfColumns()
+
+        protected int ReadNumberOfColumns()
         {
             int nColumns = 0;
             string temp = Console.ReadLine();
-            if (string.IsNullOrEmpty(temp))
+            if (!string.IsNullOrEmpty(temp))
             {
                 nColumns = int.Parse(temp);
             }
