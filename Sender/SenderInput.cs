@@ -44,7 +44,7 @@ namespace Sender
                 if (line == null) continue;
                 var values = line.Split(',');
                 //Note: The first row in this list contains headers from CSV file
-                CsvData.Add(values.ToList());
+                _csvData.Add(values.ToList());
             }
 
            return _csvData;
