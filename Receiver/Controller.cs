@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 
-
 namespace Receiver
 {
     public class Controller
@@ -25,7 +24,7 @@ namespace Receiver
         {
             OutputInterface.WriteOutput(wordCount);
         }
-        
+
         [ExcludeFromCodeCoverage]
         private static void Main()
         {
@@ -34,9 +33,9 @@ namespace Receiver
             var csvOutput = new CsvOutput(filepath);
             var controller = new Controller(consoleInput, csvOutput);
             Console.WriteLine("----------------------Reading Sender Data----------------------");
-            var output = (List<List<string>>) controller.ReadInput();
-            var commentAnalyser = new Analyser();
-            var wordCount = commentAnalyser.CountWordFrequency(output);
+            var output = (List<List<string>>)controller.ReadInput();
+            var commentAnalyzer = new Analyzer();
+            var wordCount = commentAnalyzer.CountWordFrequency(output);
             controller.WriteOutput(wordCount);
         }
     }
