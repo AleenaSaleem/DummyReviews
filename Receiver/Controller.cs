@@ -28,12 +28,12 @@ namespace Receiver
         {
             var consoleInput = new ConsoleInput();
             var filepath = @"D:\a\DummyReviews\DummyReviews\Receiver\output.csv";
-            var csvOutput = new CSVOutput(filepath);
+            var csvOutput = new CsvOutput(filepath);
             var controller = new Controller(consoleInput, csvOutput);
             Console.WriteLine("----------------------Reading Sender Data----------------------");
             var output = (List<List<string>>) controller.ReadInput();
-            var commentanalyser = new Analyser();
-            var wordCount = commentanalyser.CountWordFrequency(output);
+            var commentAnalyser = new Analyser();
+            var wordCount = commentAnalyser.CountWordFrequency(output);
             controller.WriteOutput(wordCount);
         }
     }
