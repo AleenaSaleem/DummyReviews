@@ -12,7 +12,7 @@ namespace Receiver
     [ExcludeFromCodeCoverage]
     public class ConsoleInput : IReceiverInput
     {
-        public virtual IEnumerable<IEnumerable<string>> ReadInput()
+        public IEnumerable<IEnumerable<string>> ReadInput()
         {
             int nRows = ReadNumberOfRows();
             int nColumns = ReadNumberOfColumns();
@@ -30,7 +30,7 @@ namespace Receiver
             return inputFromSender;
         }
 
-        protected int ReadNumberOfRows()
+        private int ReadNumberOfRows()
         {
             int nRows = 0;
             string temp = Console.ReadLine();
@@ -41,7 +41,7 @@ namespace Receiver
             return nRows;
         }
 
-        protected int ReadNumberOfColumns()
+        private int ReadNumberOfColumns()
         {
             int nColumns = 0;
             string temp = Console.ReadLine();
