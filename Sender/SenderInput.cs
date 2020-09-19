@@ -38,7 +38,7 @@ namespace Sender
         public IEnumerable<IEnumerable<string>> ReadInput()
         {
             using (var reader = new StreamReader(Filepath))
-            {
+            
 
                 while (!reader.EndOfStream)
                 {
@@ -53,7 +53,7 @@ namespace Sender
                 }
 
 
-            }
+            
             return _csvData;
         }
 
