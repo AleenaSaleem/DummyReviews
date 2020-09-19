@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+
 
 namespace Receiver
 {
@@ -23,7 +25,8 @@ namespace Receiver
         {
             OutputInterface.WriteOutput(wordCount);
         }
-
+        
+        [ExcludeFromCodeCoverage]
         private static void Main()
         {
             var consoleInput = new ConsoleInput();
