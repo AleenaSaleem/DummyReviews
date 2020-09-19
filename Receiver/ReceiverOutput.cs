@@ -1,36 +1,38 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using System.Xml;
 
 namespace Receiver
 {
     public interface IReceiverOutput
     {
-        void WriteOutput(IDictionary<string, int> WordFrequency);
+        void WriteOutput(IDictionary<string, int> wordFrequency);
     }
-    public class CsvOutput:IReceiverOutput
+
+    public class CsvOutput : IReceiverOutput
     {
-        public bool outputStatus;
-        readonly string filepath;
-        public List<string> fileOutput = new List<string>();
+        public bool OutputStatus;
+        readonly string _filepath;
+        public List<string> FileOutput = new List<string>();
+
         public CsvOutput(string filepath)
         {
-            this.filepath = filepath;
-            outputStatus = false;
+            this._filepath = filepath;
+            OutputStatus = false;
         }
-        public void WriteOutput(IDictionary<string, int> WordFrequency)
+
+        public void WriteOutput(IDictionary<string, int> wordFrequency)
         {
             var csv = new StringBuilder();
-            foreach(var line in WordFrequency)
+            foreach (var line in wordFrequency)
             {
-                var newLine = string.Format("{0},{1}", line.Key, line.Value);
+                var newLine = $"{line.Key},{line.Value}";
                 csv.AppendLine(newLine);
-                fileOutput.Add(newLine);
+                FileOutput.Add(newLine);
             }
-           
-            File.WriteAllText(filepath, csv.ToString());
-            outputStatus = true;
+
+            File.WriteAllText(_filepath, csv.ToString());
+            OutputStatus = true;
         }
     }
 }
