@@ -13,7 +13,7 @@ namespace Receiver
     {
         public bool OutputStatus;
         readonly string _filepath;
-        public List<string> FileOutput = new List<string>();
+        public readonly List<string> FileOutput = new List<string>();
 
         public CsvOutput(string filepath)
         {
