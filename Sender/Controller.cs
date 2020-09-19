@@ -29,6 +29,7 @@ namespace Sender
             CsvInput csvInput = new CsvInput(filepath);
             ConsoleOutput consoleOutput = new ConsoleOutput();
             Filter filter = new Filter();
+            StopWordsTool stopWordsTool = new StopWordsTool();
             Controller controller = new Controller(csvInput, consoleOutput);
             List<List<string>> parsedinput = (List<List<string>>)controller.ReadInput();
             var filteredInput = (List<List<string>>)filter.GetDataFilteredByColumnNos(parsedinput, new List<int> { 1 });
