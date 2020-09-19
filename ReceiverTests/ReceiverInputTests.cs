@@ -4,73 +4,76 @@ using Xunit;
 
 namespace ReceiverTests
 {
-    
+
     public class MockConsoleInput : IReceiverInput
     {
-        int nRows;
-        int nColumns;
-        readonly string tempRows,tempCols;
-        public MockConsoleInput(string tempRows,string tempCols)
+        int _nRows;
+        int _nColumns;
+        readonly string _tempRows, _tempCols;
+
+        public MockConsoleInput(string tempRows, string tempCols)
         {
-            this.tempRows = tempRows;
-            this.tempCols = tempCols;
+            this._tempRows = tempRows;
+            this._tempCols = tempCols;
         }
+
         public IEnumerable<IEnumerable<string>> ReadInput()
         {
-            nRows = ReadNumberOfRows();
-            nColumns = ReadNumberOfColumns();
-            var InputFromSender = new List<List<string>>();
-            for (int i = 0; i < nRows; i++)
+            _nRows = ReadNumberOfRows();
+            _nColumns = ReadNumberOfColumns();
+            var inputFromSender = new List<List<string>>();
+            for (int i = 0; i < _nRows; i++)
             {
                 var newRow = new List<string>();
-                for (int j = 0; j < nColumns; j++)
+                for (int j = 0; j < _nColumns; j++)
                 {
                     newRow.Add("sample" + i.ToString() + j.ToString());
-                    
+
                 }
-                InputFromSender.Add(newRow);
+                inputFromSender.Add(newRow);
             }
-            return InputFromSender;
+            return inputFromSender;
         }
-     
-        public int ReadNumberOfRows()
+
+        private int ReadNumberOfRows()
         {
             int numRows = 0;
-            if (!string.IsNullOrEmpty(tempRows))
+            if (!string.IsNullOrEmpty(_tempRows))
             {
-                numRows = int.Parse(tempRows);
+                numRows = int.Parse(_tempRows);
             }
             return numRows;
         }
-        public int ReadNumberOfColumns()
+
+        private int ReadNumberOfColumns()
         {
             int numCols = 0;
-            if (!string.IsNullOrEmpty(tempCols))
+            if (!string.IsNullOrEmpty(_tempCols))
             {
-                numCols = int.Parse(tempCols);
+                numCols = int.Parse(_tempCols);
             }
             return numCols;
 
         }
     }
-        
-        public class ReceiverInputTests
-        {
-            
+
+    public class ReceiverInputTests
+    {
+
         [Fact]
-            public void TestExpectingAnIEnumerableToBeReturnedWhenCalledWithNumRowsAndNumColsAndData()
-            {
-                
-                MockConsoleInput mockObject = new MockConsoleInput("3","3");
-                var ActualTestOutput = (List<List<string>>)mockObject.ReadInput();
-                Assert.Equal("sample00",ActualTestOutput[0][0]);
-            }
+        public void TestExpectingAnIEnumerableToBeReturnedWhenCalledWithNumRowsAndNumColsAndData()
+        {
+
+            MockConsoleInput mockObject = new MockConsoleInput("3", "3");
+            var actualTestOutput = (List<List<string>>)mockObject.ReadInput();
+            Assert.Equal("sample00", actualTestOutput[0][0]);
+        }
         [Fact]
         public void TestExpectingOutputToBeEmptyWhenNumRowsOrNumColsReadFromConsoleAreNullOrEmpty()
         {
             MockConsoleInput mockObject = new MockConsoleInput(string.Empty, string.Empty);
-            var ActualTestOutput = (List<List<string>>)mockObject.ReadInput();
-            Assert.True(ActualTestOutput.Count == 0);
+            var actualTestOutput = (List<List<string>>)mockObject.ReadInput();
+            Assert.True(actualTestOutput.Count == 0);
         }
 
     }
