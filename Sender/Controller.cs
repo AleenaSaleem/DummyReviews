@@ -32,7 +32,8 @@ namespace Sender
             Controller controller = new Controller(csvInput, consoleOutput);
             List<List<string>> parsedinput = (List<List<string>>)controller.ReadInput();
             var filteredInput = (List<List<string>>)filter.GetDataFilteredByColumnNos(parsedinput, new List<int> { 1 });
-            controller.WriteOutput(filteredInput);
+            var parsedData = stopWordsTool.RemoveStopWords(filteredInput);
+            controller.WriteOutput(parsedData);
         }
     }
 }
