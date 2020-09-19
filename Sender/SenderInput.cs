@@ -41,7 +41,9 @@ namespace Sender
             while (!reader.EndOfStream)
             {
                 var line = reader.ReadLine();
-                if (line == null) continue;
+                
+                if (string.IsNullOrEmpty(line)) 
+                    continue;
                 var values = line.Split(',');
                 //Note: The first row in this list contains headers from CSV file
                 _csvData.Add(values.ToList());
