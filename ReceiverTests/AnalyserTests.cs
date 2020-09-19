@@ -4,28 +4,27 @@ using Xunit;
 
 namespace ReceiverTests
 {
-    public class AnalyserTests
+    public class AnalyzerTests
     {
         [Fact]
-        public void TestExpectingIEnumenrableContainingWordsSeparatedBYSpaceWhenCalledWithValidIEnumerable()
+        public void TestExpectingIEnumerableContainingWordsSeparatedBySpaceWhenCalledWithValidIEnumerable()
         {
-            var TestInput = new List<string>();
-            TestInput.Add("this is sample test string");
-            var Output = (List<string>) Analyser.GetSeparatedWordsBySpaceFromARow(TestInput);
-            Assert.Equal("this", Output[0]);
-            Assert.Equal("is", Output[1]);
+            var testInput = new List<string> {"this is sample test string"};
+            var output = (List<string>)Analyzer.GetSeparatedWordsBySpaceFromARow(testInput);
+            Assert.Equal("this", output[0]);
+            Assert.Equal("is", output[1]);
         }
 
         [Fact]
         public void TestExpectingAnUpdatedDictionaryOfWordFrequencyWhenCalledWithDictionaryToUpdateAndIEnumerable()
         {
-            var TestInput = new List<string>();
-            TestInput.Add("this");
-            TestInput.Add("sample");
-            IDictionary<string, int> DictToUpdate = new Dictionary<string, int>();
-            DictToUpdate.Add("dummy", 1);
-            DictToUpdate.Add("sample", 1);
-            var updatedDict = Analyser.AddWordCountInDictionary(DictToUpdate, TestInput);
+            var testInput = new List<string> {"this", "sample"};
+            IDictionary<string, int> dictToUpdate = new Dictionary<string, int>
+            {
+                { "dummy", 1 },
+                { "sample", 1 }
+            };
+            var updatedDict = Analyzer.AddWordCountInDictionary(dictToUpdate, testInput);
             Assert.True(updatedDict["this"] == 1);
             Assert.True(updatedDict["sample"] == 2);
         }
@@ -33,17 +32,21 @@ namespace ReceiverTests
         [Fact]
         public void TestExpectingWordFrequencyOfAllWordsWhenCalledWithATwoDimensionalIEnumerable()
         {
-            var TestAnalyser = new Analyser();
-            var TestInput = new List<List<string>>();
-            var tempList1 = new List<string>();
-            tempList1.Add("sample string1");
-            var tempList2 = new List<string>();
-            tempList2.Add("sample string2");
-            TestInput.Add(tempList1);
-            TestInput.Add(tempList2);
-            var TestOutput = TestAnalyser.CountWordFrequency(TestInput);
-            Assert.True(TestOutput["string1"] == 1);
-            Assert.True(TestOutput["sample"] == 2);
+            var testAnalyzer = new Analyzer();
+            var testInput = new List<List<string>>();
+            var tempList1 = new List<string>
+            {
+                "sample string1"
+            };
+            var tempList2 = new List<string>
+            {
+                "sample string2"
+            };
+            testInput.Add(tempList1);
+            testInput.Add(tempList2);
+            var testOutput = testAnalyzer.CountWordFrequency(testInput);
+            Assert.True(testOutput["string1"] == 1);
+            Assert.True(testOutput["sample"] == 2);
         }
     }
 }
