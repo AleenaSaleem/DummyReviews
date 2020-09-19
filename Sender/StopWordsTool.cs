@@ -6,7 +6,7 @@ namespace Sender
     public class StopWordsTool
     {
         #region StopWordDictionary
-        static readonly Dictionary<string, bool> _stops = new Dictionary<string, bool>
+        static readonly Dictionary<string, bool> Stops = new Dictionary<string, bool>
         {
         { "a", true },
         { "about", true },
@@ -354,7 +354,7 @@ namespace Sender
         }
         public static  bool IsStopWord(string word)
         {
-            return _stops.ContainsKey(word);
+            return Stops.ContainsKey(word);
         }
     }
 
