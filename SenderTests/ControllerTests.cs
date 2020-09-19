@@ -6,15 +6,20 @@ namespace SenderTests
 {
     public class ControllerTests
     {
-        const string Filepath = @"D:\a\DummyReviews\DummyReviews\SenderTests\TestSample.csv";
+        const string Filepath = @"D:\a\DummyReviews\DummyRevies\SenderTests\TestSample.csv";
+        readonly CsvInput csvInput = new CsvInput(Filepath);
+        readonly ConsoleOutput consoleOutput = new ConsoleOutput();
+        Controller controller;
+       
+        
         [Fact]
         public static void TestExpectingAnObjectOfCsvInputTypeToBeAssignedToControllersInputInterface()
         {
-            CsvInput csvInput = new CsvInput(Filepath);
-            ConsoleOutput consoleOutput = new ConsoleOutput();
-            Controller controller = new Controller(csvInput, consoleOutput);
-            Assert.Equal(csvInput, controller.InputInterface);
-            Assert.Equal(consoleOutput, controller.OutputInterface);
+            CsvInput _csvInput = new CsvInput(Filepath);
+            ConsoleOutput _consoleOutput = new ConsoleOutput();
+            Controller _controller = new Controller(_csvInput, _consoleOutput);
+            Assert.Equal(_csvInput, _controller.InputInterface);
+            Assert.Equal(_consoleOutput, _controller.OutputInterface);
         }
 
         
@@ -22,9 +27,8 @@ namespace SenderTests
         [Fact]
         public void TestExpectingAppropriateWriteOutputMethodToBeCalledWhenCalledWithTwoDimensionalIEnumerable()
         {
-            CsvInput csvInput = new CsvInput(Filepath);
-            ConsoleOutput consoleOutput =new ConsoleOutput();
-            Controller controller = new Controller(csvInput, consoleOutput);
+
+            controller =  new Controller(csvInput, consoleOutput);
             List<List<string>> parsedInput = (List<List<string>>)controller.ReadInput();
             controller.WriteOutput(parsedInput);
             Assert.Equal("sampledata", consoleOutput.OutputData[0]);
@@ -33,9 +37,7 @@ namespace SenderTests
         [Fact]
         public void TestExpectingAppropriateReadInputMethodToBeCalledWhenCalled()
         {
-            CsvInput csvInput = new CsvInput(Filepath);
-            ConsoleOutput consoleOutput = new ConsoleOutput();
-            Controller controller = new Controller(csvInput, consoleOutput);
+            controller = new Controller(csvInput, consoleOutput);
             List<List<string>> parsedInput = (List<List<string>>)controller.ReadInput();
             Assert.Equal("sampledata", parsedInput[0][0]);
         }
