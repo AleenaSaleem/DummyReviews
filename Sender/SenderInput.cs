@@ -37,24 +37,17 @@ namespace Sender
         
         public IEnumerable<IEnumerable<string>> ReadInput()
         {
-            using (var reader = new StreamReader(Filepath))
-            
+            using var reader = new StreamReader(Filepath);
+            while (!reader.EndOfStream)
+            {
+                var line = reader.ReadLine();
+                if (line == null) continue;
+                var values = line.Split(',');
+                //Note: The first row in this list contains headers from CSV file
+                CsvData.Add(values.ToList());
+            }
 
-                while (!reader.EndOfStream)
-                {
-                    var line = reader.ReadLine();
-                    if (string.IsNullOrEmpty(line))
-                    {
-                        continue;
-                    }
-                    var values = line.Split(',');
-                    //Note: The first row in this list contains headers from CSV file
-                    _csvData.Add(values.ToList());
-                }
-
-
-            
-            return _csvData;
+           return _csvData;
         }
 
     }
