@@ -35,8 +35,6 @@ namespace SenderTests
             CsvInput csvInput = new CsvInput(filepath);
             List<List<string>> testOutput = (List<List<string>>)csvInput.ReadInput();
             Debug.Assert(testOutput[0][0] == "sampledata");
-            Console.WriteLine(testOutput[0][0]);
-            Console.WriteLine("test");
         }
         [Fact]
         public void TestExpectingOutputToBeEmptyWhenCalledWithFilePathWhereFileIsEmpty()
