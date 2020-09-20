@@ -38,11 +38,11 @@ namespace ReceiverTests
             Controller controller = new Controller(mockInput, output);
             List<List<string>> testInput = new List<List<string>>
             {
-                new List<string> {"sample1", "1"}, new List<string> {"sample2", "2"}
+                new List<string> {"sample1", "2"}, new List<string> {"sample2", "5"}
             };
             controller.WriteOutput(testInput);
             Assert.True(output.OutputStatus);
-            Assert.Equal("sample1,1", output.FileOutput[0]);
+            Assert.Equal("sample1,2", output.FileOutput[0]);
         }
     }
 }
