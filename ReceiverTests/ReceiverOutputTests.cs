@@ -33,30 +33,32 @@ namespace ReceiverTests
         public void TestExpectingStatusOfFileWrittenAsTrueWhenCalledWithDictionaryOfWordFrequency()
         {
             CsvOutput csvOutput = new CsvOutput("Random_file_path");
-            IDictionary<string, int> dict = new Dictionary<string, int>();
-            dict.Add("sample1", 1);
-            dict.Add("sample2", 2);
-            csvOutput.WriteOutput(dict);
+            List<List<string>> testInput = new List<List<string>>
+            {
+                new List<string> {"sample1", "1"}, new List<string> {"sample2", "1"}
+            };
+
+            csvOutput.WriteOutput(testInput);
             Assert.True(csvOutput.OutputStatus);
         }
+
         [Fact]
         public void TestExpectingValidMockFileOutputWhenCalledWithDictionaryOfWordFrequency()
         {
             CsvOutput mockOutput = new CsvOutput("Random_file_path");
-            IDictionary<string, int> dict = new Dictionary<string, int>
+            List<List<string>> testInput = new List<List<string>>
             {
-                { "sample1", 1 },
-                { "sample2", 2 }
+                new List<string> {"sample1", "1"}, new List<string> {"sample2", "2"}
             };
-            mockOutput.WriteOutput(dict);
+            mockOutput.WriteOutput(testInput);
             Assert.Equal("sample1,1", mockOutput.FileOutput[0]);
         }
+
         [Fact]
         public void TestExpectingFileOutputToBeEmptyWhenCalledWithEmptyIDictionary()
         {
             CsvOutput mockOutput = new CsvOutput("Random_file_path");
-            IDictionary<string, int> dict = new Dictionary<string, int>();
-            mockOutput.WriteOutput(dict);
+            mockOutput.WriteOutput(new List<List<string>>());
             Assert.True(mockOutput.FileOutput.Count == 0);
         }
     }
