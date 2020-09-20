@@ -26,7 +26,7 @@ namespace Receiver
             var csv = new StringBuilder();
             foreach (var row in wordFrequency)
             {
-                var newLine = $"";
+                var newLine = "";
                 foreach (var value in row)
                 {
                     newLine += value + ",";
