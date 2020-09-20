@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 
 namespace Receiver
 {
@@ -20,9 +21,9 @@ namespace Receiver
             return InputInterface.ReadInput();
         }
 
-        public void WriteOutput(IDictionary<string, int> wordCount)
+        public void WriteOutput(IEnumerable<IEnumerable<string>> data)
         {
-            OutputInterface.WriteOutput(wordCount);
+            OutputInterface.WriteOutput(data);
         }
 
         [ExcludeFromCodeCoverage]
@@ -32,11 +33,16 @@ namespace Receiver
             var filepath = @"D:\a\DummyReviews\DummyReviews\Receiver\output.csv";
             var csvOutput = new CsvOutput(filepath);
             var controller = new Controller(consoleInput, csvOutput);
+
             Console.WriteLine("----------------------Reading Sender Data----------------------");
+
             var output = (List<List<string>>)controller.ReadInput();
             var commentAnalyzer = new Analyzer();
             var wordCount = commentAnalyzer.CountWordFrequency(output);
-            controller.WriteOutput(wordCount);
+
+            var wordCountList = wordCount.Select(item => new List<string> { item.Key, item.Value.ToString() }).ToList();
+
+            controller.WriteOutput(wordCountList);
         }
     }
 }
