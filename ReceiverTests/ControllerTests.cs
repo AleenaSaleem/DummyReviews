@@ -36,12 +36,11 @@ namespace ReceiverTests
             string filepath = "same_random_path";
             CsvOutput output = new CsvOutput(filepath);
             Controller controller = new Controller(mockInput, output);
-            IDictionary<string, int> dict = new Dictionary<string, int>
+            List<List<string>> testInput = new List<List<string>>
             {
-                { "sample1", 1 },
-                { "sample2", 2 }
+                new List<string> {"sample1", "1"}, new List<string> {"sample2", "2"}
             };
-            controller.WriteOutput(dict);
+            controller.WriteOutput(testInput);
             Assert.True(output.OutputStatus);
             Assert.Equal("sample1,1", output.FileOutput[0]);
         }
