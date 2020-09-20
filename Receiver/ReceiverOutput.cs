@@ -6,7 +6,7 @@ namespace Receiver
 {
     public interface IReceiverOutput
     {
-        void WriteOutput(IDictionary<string, int> wordFrequency);
+        void WriteOutput(IEnumerable<IEnumerable<string>> data);
     }
 
     public class CsvOutput : IReceiverOutput
@@ -21,12 +21,18 @@ namespace Receiver
             OutputStatus = false;
         }
 
-        public void WriteOutput(IDictionary<string, int> wordFrequency)
+        public void WriteOutput(IEnumerable<IEnumerable<string>> wordFrequency)
         {
             var csv = new StringBuilder();
-            foreach (var line in wordFrequency)
+            foreach (var row in wordFrequency)
             {
-                var newLine = $"{line.Key},{line.Value}";
+                var newLine = $"";
+                foreach (var value in row)
+                {
+                    newLine += value + ",";
+                }
+
+                newLine = newLine.Remove(newLine.Length - 1);
                 csv.AppendLine(newLine);
                 FileOutput.Add(newLine);
             }
