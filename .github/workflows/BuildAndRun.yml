@@ -45,7 +45,7 @@ jobs:
     - name: Commit File Output
       run: |
         git config --local user.name  ${{ github.actor }}
-        git add ./Receiver
+        git add ./FileOutput
         git commit -m "Updating the output file"
     
     - name: Push changes
