@@ -30,7 +30,7 @@ namespace Receiver
         private static void Main()
         {
             var consoleInput = new ConsoleInput();
-            var filepath = @"D:\a\DummyReviews\DummyReviews\Receiver\output.csv";
+            var filepath = @"D:\a\DummyReviews\DummyReviews\FileOutput\output.csv";
             var csvOutput = new CsvOutput(filepath);
             var controller = new Controller(consoleInput, csvOutput);
 
